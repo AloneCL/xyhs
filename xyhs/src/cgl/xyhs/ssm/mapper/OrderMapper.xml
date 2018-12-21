@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cgl.xyhs.ssm.mapper.OrderMapper">
+  <resultMap id="BaseResultMap" type="cgl.xyhs.pojo.Order">
+    <id column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="order_umber" jdbcType="VARCHAR" property="orderUmber" />
+    <result column="order_reTime" jdbcType="TIMESTAMP" property="orderRetime" />
+    <result column="order_startTime" jdbcType="TIMESTAMP" property="orderStarttime" />
+    <result column="order_endTime" jdbcType="TIMESTAMP" property="orderEndtime" />
+    <result column="order_userId" jdbcType="INTEGER" property="orderUserid" />
+    <result column="order_userTel" jdbcType="VARCHAR" property="orderUsertel" />
+    <result column="order_userName" jdbcType="VARCHAR" property="orderUsername" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="userTel" jdbcType="VARCHAR" property="usertel" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="imgUrl" jdbcType="VARCHAR" property="imgurl" />
+    <result column="order_status" jdbcType="BIT" property="orderStatus" />
+    <result column="order_manner" jdbcType="BIT" property="orderManner" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_id, order_umber, order_reTime, order_startTime, order_endTime, order_userId, 
+    order_userTel, order_userName, userId, user_name, userTel, address, price, imgUrl, 
+    order_status, order_manner
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_inf
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order_inf
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cgl.xyhs.pojo.Order">
+    insert into order_inf (order_id, order_umber, order_reTime, 
+      order_startTime, order_endTime, order_userId, 
+      order_userTel, order_userName, userId, 
+      user_name, userTel, address, 
+      price, imgUrl, order_status, 
+      order_manner)
+    values (#{orderId,jdbcType=INTEGER}, #{orderUmber,jdbcType=VARCHAR}, #{orderRetime,jdbcType=TIMESTAMP}, 
+      #{orderStarttime,jdbcType=TIMESTAMP}, #{orderEndtime,jdbcType=TIMESTAMP}, #{orderUserid,jdbcType=INTEGER}, 
+      #{orderUsertel,jdbcType=VARCHAR}, #{orderUsername,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, 
+      #{userName,jdbcType=VARCHAR}, #{usertel,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DOUBLE}, #{imgurl,jdbcType=VARCHAR}, #{orderStatus,jdbcType=BIT}, 
+      #{orderManner,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="cgl.xyhs.pojo.Order">
+    insert into order_inf
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="orderUmber != null">
+        order_umber,
+      </if>
+      <if test="orderRetime != null">
+        order_reTime,
+      </if>
+      <if test="orderStarttime != null">
+        order_startTime,
+      </if>
+      <if test="orderEndtime != null">
+        order_endTime,
+      </if>
+      <if test="orderUserid != null">
+        order_userId,
+      </if>
+      <if test="orderUsertel != null">
+        order_userTel,
+      </if>
+      <if test="orderUsername != null">
+        order_userName,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="usertel != null">
+        userTel,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="imgurl != null">
+        imgUrl,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+      <if test="orderManner != null">
+        order_manner,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="orderUmber != null">
+        #{orderUmber,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRetime != null">
+        #{orderRetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderStarttime != null">
+        #{orderStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderEndtime != null">
+        #{orderEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderUserid != null">
+        #{orderUserid,jdbcType=INTEGER},
+      </if>
+      <if test="orderUsertel != null">
+        #{orderUsertel,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUsername != null">
+        #{orderUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="usertel != null">
+        #{usertel,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="imgurl != null">
+        #{imgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=BIT},
+      </if>
+      <if test="orderManner != null">
+        #{orderManner,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cgl.xyhs.pojo.Order">
+    update order_inf
+    <set>
+      <if test="orderUmber != null">
+        order_umber = #{orderUmber,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRetime != null">
+        order_reTime = #{orderRetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderStarttime != null">
+        order_startTime = #{orderStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderEndtime != null">
+        order_endTime = #{orderEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderUserid != null">
+        order_userId = #{orderUserid,jdbcType=INTEGER},
+      </if>
+      <if test="orderUsertel != null">
+        order_userTel = #{orderUsertel,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUsername != null">
+        order_userName = #{orderUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="usertel != null">
+        userTel = #{usertel,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="imgurl != null">
+        imgUrl = #{imgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=BIT},
+      </if>
+      <if test="orderManner != null">
+        order_manner = #{orderManner,jdbcType=BIT},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cgl.xyhs.pojo.Order">
+    update order_inf
+    set order_umber = #{orderUmber,jdbcType=VARCHAR},
+      order_reTime = #{orderRetime,jdbcType=TIMESTAMP},
+      order_startTime = #{orderStarttime,jdbcType=TIMESTAMP},
+      order_endTime = #{orderEndtime,jdbcType=TIMESTAMP},
+      order_userId = #{orderUserid,jdbcType=INTEGER},
+      order_userTel = #{orderUsertel,jdbcType=VARCHAR},
+      order_userName = #{orderUsername,jdbcType=VARCHAR},
+      userId = #{userid,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR},
+      userTel = #{usertel,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DOUBLE},
+      imgUrl = #{imgurl,jdbcType=VARCHAR},
+      order_status = #{orderStatus,jdbcType=BIT},
+      order_manner = #{orderManner,jdbcType=BIT}
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+</mapper>

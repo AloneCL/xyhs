@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cgl.xyhs.ssm.mapper.EvaluateMapper">
+  <resultMap id="BaseResultMap" type="cgl.xyhs.pojo.Evaluate">
+    <id column="eva_id" jdbcType="INTEGER" property="evaId" />
+    <result column="eva_seller_id" jdbcType="INTEGER" property="evaSellerId" />
+    <result column="seller_name" jdbcType="VARCHAR" property="sellerName" />
+    <result column="buyer_id" jdbcType="INTEGER" property="buyerId" />
+    <result column="buyer_name" jdbcType="VARCHAR" property="buyerName" />
+    <result column="eva_time" jdbcType="TIMESTAMP" property="evaTime" />
+    <result column="eva_starlevel" jdbcType="DOUBLE" property="evaStarlevel" />
+    <result column="eva_content" jdbcType="VARCHAR" property="evaContent" />
+    <result column="eva_img" jdbcType="VARCHAR" property="evaImg" />
+    <result column="eva_response" jdbcType="VARCHAR" property="evaResponse" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    eva_id, eva_seller_id, seller_name, buyer_id, buyer_name, eva_time, eva_starlevel, 
+    eva_content, eva_img, eva_response
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eva_inf
+    where eva_id = #{evaId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from eva_inf
+    where eva_id = #{evaId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cgl.xyhs.pojo.Evaluate">
+    insert into eva_inf (eva_id, eva_seller_id, seller_name, 
+      buyer_id, buyer_name, eva_time, 
+      eva_starlevel, eva_content, eva_img, 
+      eva_response)
+    values (#{evaId,jdbcType=INTEGER}, #{evaSellerId,jdbcType=INTEGER}, #{sellerName,jdbcType=VARCHAR}, 
+      #{buyerId,jdbcType=INTEGER}, #{buyerName,jdbcType=VARCHAR}, #{evaTime,jdbcType=TIMESTAMP}, 
+      #{evaStarlevel,jdbcType=DOUBLE}, #{evaContent,jdbcType=VARCHAR}, #{evaImg,jdbcType=VARCHAR}, 
+      #{evaResponse,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cgl.xyhs.pojo.Evaluate">
+    insert into eva_inf
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="evaId != null">
+        eva_id,
+      </if>
+      <if test="evaSellerId != null">
+        eva_seller_id,
+      </if>
+      <if test="sellerName != null">
+        seller_name,
+      </if>
+      <if test="buyerId != null">
+        buyer_id,
+      </if>
+      <if test="buyerName != null">
+        buyer_name,
+      </if>
+      <if test="evaTime != null">
+        eva_time,
+      </if>
+      <if test="evaStarlevel != null">
+        eva_starlevel,
+      </if>
+      <if test="evaContent != null">
+        eva_content,
+      </if>
+      <if test="evaImg != null">
+        eva_img,
+      </if>
+      <if test="evaResponse != null">
+        eva_response,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="evaId != null">
+        #{evaId,jdbcType=INTEGER},
+      </if>
+      <if test="evaSellerId != null">
+        #{evaSellerId,jdbcType=INTEGER},
+      </if>
+      <if test="sellerName != null">
+        #{sellerName,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null">
+        #{buyerId,jdbcType=INTEGER},
+      </if>
+      <if test="buyerName != null">
+        #{buyerName,jdbcType=VARCHAR},
+      </if>
+      <if test="evaTime != null">
+        #{evaTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaStarlevel != null">
+        #{evaStarlevel,jdbcType=DOUBLE},
+      </if>
+      <if test="evaContent != null">
+        #{evaContent,jdbcType=VARCHAR},
+      </if>
+      <if test="evaImg != null">
+        #{evaImg,jdbcType=VARCHAR},
+      </if>
+      <if test="evaResponse != null">
+        #{evaResponse,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cgl.xyhs.pojo.Evaluate">
+    update eva_inf
+    <set>
+      <if test="evaSellerId != null">
+        eva_seller_id = #{evaSellerId,jdbcType=INTEGER},
+      </if>
+      <if test="sellerName != null">
+        seller_name = #{sellerName,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null">
+        buyer_id = #{buyerId,jdbcType=INTEGER},
+      </if>
+      <if test="buyerName != null">
+        buyer_name = #{buyerName,jdbcType=VARCHAR},
+      </if>
+      <if test="evaTime != null">
+        eva_time = #{evaTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaStarlevel != null">
+        eva_starlevel = #{evaStarlevel,jdbcType=DOUBLE},
+      </if>
+      <if test="evaContent != null">
+        eva_content = #{evaContent,jdbcType=VARCHAR},
+      </if>
+      <if test="evaImg != null">
+        eva_img = #{evaImg,jdbcType=VARCHAR},
+      </if>
+      <if test="evaResponse != null">
+        eva_response = #{evaResponse,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where eva_id = #{evaId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cgl.xyhs.pojo.Evaluate">
+    update eva_inf
+    set eva_seller_id = #{evaSellerId,jdbcType=INTEGER},
+      seller_name = #{sellerName,jdbcType=VARCHAR},
+      buyer_id = #{buyerId,jdbcType=INTEGER},
+      buyer_name = #{buyerName,jdbcType=VARCHAR},
+      eva_time = #{evaTime,jdbcType=TIMESTAMP},
+      eva_starlevel = #{evaStarlevel,jdbcType=DOUBLE},
+      eva_content = #{evaContent,jdbcType=VARCHAR},
+      eva_img = #{evaImg,jdbcType=VARCHAR},
+      eva_response = #{evaResponse,jdbcType=VARCHAR}
+    where eva_id = #{evaId,jdbcType=INTEGER}
+  </update>
+</mapper>

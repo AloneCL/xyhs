@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cgl.xyhs.ssm.mapper.RatationMapper">
+  <resultMap id="BaseResultMap" type="cgl.xyhs.pojo.Ratation">
+    <result column="imgUrl1" jdbcType="VARCHAR" property="imgurl1" />
+    <result column="imgUrl2" jdbcType="VARCHAR" property="imgurl2" />
+    <result column="imgUrl3" jdbcType="VARCHAR" property="imgurl3" />
+  </resultMap>
+  <insert id="insert" parameterType="cgl.xyhs.pojo.Ratation">
+    insert into ratationimg_inf (imgUrl1, imgUrl2, imgUrl3
+      )
+    values (#{imgurl1,jdbcType=VARCHAR}, #{imgurl2,jdbcType=VARCHAR}, #{imgurl3,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cgl.xyhs.pojo.Ratation">
+    insert into ratationimg_inf
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="imgurl1 != null">
+        imgUrl1,
+      </if>
+      <if test="imgurl2 != null">
+        imgUrl2,
+      </if>
+      <if test="imgurl3 != null">
+        imgUrl3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="imgurl1 != null">
+        #{imgurl1,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl2 != null">
+        #{imgurl2,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl3 != null">
+        #{imgurl3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cgl.xyhs.ssm.mapper.AdminMapper">
+  <resultMap id="BaseResultMap" type="cgl.xyhs.pojo.Admin">
+    <id column="admin_id" jdbcType="INTEGER" property="adminId" />
+    <result column="admin_name" jdbcType="VARCHAR" property="adminName" />
+    <result column="admin_pass" jdbcType="VARCHAR" property="adminPass" />
+    <result column="admin_tel" jdbcType="VARCHAR" property="adminTel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    admin_id, admin_name, admin_pass, admin_tel
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from admin_inf
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from admin_inf
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cgl.xyhs.pojo.Admin">
+    insert into admin_inf (admin_id, admin_name, admin_pass, 
+      admin_tel)
+    values (#{adminId,jdbcType=INTEGER}, #{adminName,jdbcType=VARCHAR}, #{adminPass,jdbcType=VARCHAR}, 
+      #{adminTel,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cgl.xyhs.pojo.Admin">
+    insert into admin_inf
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="adminId != null">
+        admin_id,
+      </if>
+      <if test="adminName != null">
+        admin_name,
+      </if>
+      <if test="adminPass != null">
+        admin_pass,
+      </if>
+      <if test="adminTel != null">
+        admin_tel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="adminId != null">
+        #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="adminName != null">
+        #{adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPass != null">
+        #{adminPass,jdbcType=VARCHAR},
+      </if>
+      <if test="adminTel != null">
+        #{adminTel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cgl.xyhs.pojo.Admin">
+    update admin_inf
+    <set>
+      <if test="adminName != null">
+        admin_name = #{adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPass != null">
+        admin_pass = #{adminPass,jdbcType=VARCHAR},
+      </if>
+      <if test="adminTel != null">
+        admin_tel = #{adminTel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cgl.xyhs.pojo.Admin">
+    update admin_inf
+    set admin_name = #{adminName,jdbcType=VARCHAR},
+      admin_pass = #{adminPass,jdbcType=VARCHAR},
+      admin_tel = #{adminTel,jdbcType=VARCHAR}
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </update>
+</mapper>
