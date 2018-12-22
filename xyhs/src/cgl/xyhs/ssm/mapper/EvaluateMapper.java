@@ -2,7 +2,7 @@ package cgl.xyhs.ssm.mapper;
 
 import org.springframework.stereotype.Repository;
 
-import cgl.xyhs.pojo.Evaluate;
+import cgl.xyhs.ssm.pojo.Evaluate;
 
 
 /**

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cgl.xyhs.ssm.mapper.OrderMapper">
-  <resultMap id="BaseResultMap" type="cgl.xyhs.pojo.Order">
+  <resultMap id="BaseResultMap" type="cgl.xyhs.ssm.pojo.Order">
     <id column="order_id" jdbcType="INTEGER" property="orderId" />
     <result column="order_umber" jdbcType="VARCHAR" property="orderUmber" />
     <result column="order_reTime" jdbcType="TIMESTAMP" property="orderRetime" />
@@ -34,7 +34,7 @@
     delete from order_inf
     where order_id = #{orderId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cgl.xyhs.pojo.Order">
+  <insert id="insert" parameterType="cgl.xyhs.ssm.pojo.Order">
     insert into order_inf (order_id, order_umber, order_reTime, 
       order_startTime, order_endTime, order_userId, 
       order_userTel, order_userName, userId, 
@@ -48,7 +48,7 @@
       #{price,jdbcType=DOUBLE}, #{imgurl,jdbcType=VARCHAR}, #{orderStatus,jdbcType=BIT}, 
       #{orderManner,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="cgl.xyhs.pojo.Order">
+  <insert id="insertSelective" parameterType="cgl.xyhs.ssm.pojo.Order">
     insert into order_inf
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="orderId != null">
@@ -151,7 +151,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cgl.xyhs.pojo.Order">
+  <update id="updateByPrimaryKeySelective" parameterType="cgl.xyhs.ssm.pojo.Order">
     update order_inf
     <set>
       <if test="orderUmber != null">
@@ -202,7 +202,7 @@
     </set>
     where order_id = #{orderId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cgl.xyhs.pojo.Order">
+  <update id="updateByPrimaryKey" parameterType="cgl.xyhs.ssm.pojo.Order">
     update order_inf
     set order_umber = #{orderUmber,jdbcType=VARCHAR},
       order_reTime = #{orderRetime,jdbcType=TIMESTAMP},

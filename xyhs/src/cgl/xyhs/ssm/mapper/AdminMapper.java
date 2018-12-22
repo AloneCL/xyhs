@@ -2,7 +2,7 @@ package cgl.xyhs.ssm.mapper;
 
 import org.springframework.stereotype.Repository;
 
-import cgl.xyhs.pojo.Admin;
+import cgl.xyhs.ssm.pojo.Admin;
 
 
 /**
@@ -17,11 +17,11 @@ import cgl.xyhs.pojo.Admin;
 public interface AdminMapper {
     int deleteByPrimaryKey(Integer adminId);
 
-    int insert(Admin record);
-
     int insertSelective(Admin record);
 
     Admin selectByPrimaryKey(Integer adminId);
+    
+    Admin selectByUserName(String name);
 
     int updateByPrimaryKeySelective(Admin record);
 

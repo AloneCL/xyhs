@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cgl.xyhs.ssm.mapper.EvaluateMapper">
-  <resultMap id="BaseResultMap" type="cgl.xyhs.pojo.Evaluate">
+  <resultMap id="BaseResultMap" type="cgl.xyhs.ssm.pojo.Evaluate">
     <id column="eva_id" jdbcType="INTEGER" property="evaId" />
     <result column="eva_seller_id" jdbcType="INTEGER" property="evaSellerId" />
     <result column="seller_name" jdbcType="VARCHAR" property="sellerName" />
@@ -27,7 +27,7 @@
     delete from eva_inf
     where eva_id = #{evaId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cgl.xyhs.pojo.Evaluate">
+  <insert id="insert" parameterType="cgl.xyhs.ssm.pojo.Evaluate">
     insert into eva_inf (eva_id, eva_seller_id, seller_name, 
       buyer_id, buyer_name, eva_time, 
       eva_starlevel, eva_content, eva_img, 
@@ -37,7 +37,7 @@
       #{evaStarlevel,jdbcType=DOUBLE}, #{evaContent,jdbcType=VARCHAR}, #{evaImg,jdbcType=VARCHAR}, 
       #{evaResponse,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="cgl.xyhs.pojo.Evaluate">
+  <insert id="insertSelective" parameterType="cgl.xyhs.ssm.pojo.Evaluate">
     insert into eva_inf
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="evaId != null">
@@ -104,7 +104,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cgl.xyhs.pojo.Evaluate">
+  <update id="updateByPrimaryKeySelective" parameterType="cgl.xyhs.ssm.pojo.Evaluate">
     update eva_inf
     <set>
       <if test="evaSellerId != null">
@@ -137,7 +137,7 @@
     </set>
     where eva_id = #{evaId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cgl.xyhs.pojo.Evaluate">
+  <update id="updateByPrimaryKey" parameterType="cgl.xyhs.ssm.pojo.Evaluate">
     update eva_inf
     set eva_seller_id = #{evaSellerId,jdbcType=INTEGER},
       seller_name = #{sellerName,jdbcType=VARCHAR},

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cgl.xyhs.ssm.mapper.GoodsMapper">
-  <resultMap id="BaseResultMap" type="cgl.xyhs.pojo.Goods">
+  <resultMap id="BaseResultMap" type="cgl.xyhs.ssm.pojo.Goods">
     <id column="goods_id" jdbcType="INTEGER" property="goodsId" />
     <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
     <result column="goods_type" jdbcType="INTEGER" property="goodsType" />
@@ -26,7 +26,7 @@
     delete from goods_inf
     where goods_id = #{goodsId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cgl.xyhs.pojo.Goods">
+  <insert id="insert" parameterType="cgl.xyhs.ssm.pojo.Goods">
     insert into goods_inf (goods_id, goods_name, goods_type, 
       goods_status, up_time, price, 
       goods_img, introduce, user_id
@@ -36,7 +36,7 @@
       #{goodsImg,jdbcType=VARCHAR}, #{introduce,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cgl.xyhs.pojo.Goods">
+  <insert id="insertSelective" parameterType="cgl.xyhs.ssm.pojo.Goods">
     insert into goods_inf
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="goodsId != null">
@@ -97,7 +97,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cgl.xyhs.pojo.Goods">
+  <update id="updateByPrimaryKeySelective" parameterType="cgl.xyhs.ssm.pojo.Goods">
     update goods_inf
     <set>
       <if test="goodsName != null">
@@ -127,7 +127,7 @@
     </set>
     where goods_id = #{goodsId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cgl.xyhs.pojo.Goods">
+  <update id="updateByPrimaryKey" parameterType="cgl.xyhs.ssm.pojo.Goods">
     update goods_inf
     set goods_name = #{goodsName,jdbcType=VARCHAR},
       goods_type = #{goodsType,jdbcType=INTEGER},

@@ -12,7 +12,6 @@
 		<!-- 数据源 -->
 		<property name="dataSource" ref="data"/>
 	</bean>
-	
 	<!-- 开启事务的注解配置，使用@Transactional声明 -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 

@@ -16,7 +16,7 @@
     
      <mvc:annotation-driven/> 
 	<!-- 开启包扫描(扫描生成bean的注解) -->
-    <context:component-scan base-package="cgl.xyhs.ssm"/>
+    <context:component-scan base-package="cgl.xyhs"/>
 
 	
 	<!-- 视图解析器 -->

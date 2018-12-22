@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import cgl.xyhs.pojo.Order;
+import cgl.xyhs.ssm.pojo.Order;
 
 
 /**

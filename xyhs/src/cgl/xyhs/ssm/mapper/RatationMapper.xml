@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cgl.xyhs.ssm.mapper.RatationMapper">
-  <resultMap id="BaseResultMap" type="cgl.xyhs.pojo.Ratation">
+  <resultMap id="BaseResultMap" type="cgl.xyhs.ssm.pojo.Ratation">
     <result column="imgUrl1" jdbcType="VARCHAR" property="imgurl1" />
     <result column="imgUrl2" jdbcType="VARCHAR" property="imgurl2" />
     <result column="imgUrl3" jdbcType="VARCHAR" property="imgurl3" />
   </resultMap>
-  <insert id="insert" parameterType="cgl.xyhs.pojo.Ratation">
+  <insert id="insert" parameterType="cgl.xyhs.ssm.pojo.Ratation">
     insert into ratationimg_inf (imgUrl1, imgUrl2, imgUrl3
       )
     values (#{imgurl1,jdbcType=VARCHAR}, #{imgurl2,jdbcType=VARCHAR}, #{imgurl3,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cgl.xyhs.pojo.Ratation">
+  <insert id="insertSelective" parameterType="cgl.xyhs.ssm.pojo.Ratation">
     insert into ratationimg_inf
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="imgurl1 != null">
