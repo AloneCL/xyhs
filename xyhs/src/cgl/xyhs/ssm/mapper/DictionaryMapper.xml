@@ -9,28 +9,32 @@
   <sql id="Base_Column_List">
     id, goods_type, name
   </sql>
+  
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from dictionary_inf
     where id = #{id,jdbcType=INTEGER}
   </select>
+  
+  <select id="selectByType" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List"/>
+    from dictionary_inf
+    where goods_type = #{type,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from dictionary_inf
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from dictionary_inf
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cgl.xyhs.ssm.pojo.Dictionary">
-    insert into dictionary_inf (id, goods_type, name
-      )
-    values (#{id,jdbcType=INTEGER}, #{goodsType,jdbcType=TINYINT}, #{name,jdbcType=VARCHAR}
-      )
-  </insert>
+  
   <insert id="insertSelective" parameterType="cgl.xyhs.ssm.pojo.Dictionary">
     insert into dictionary_inf
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="goodsType != null">
         goods_type,
       </if>
@@ -39,9 +43,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="goodsType != null">
         #{goodsType,jdbcType=TINYINT},
       </if>
@@ -50,6 +51,7 @@
       </if>
     </trim>
   </insert>
+  
   <update id="updateByPrimaryKeySelective" parameterType="cgl.xyhs.ssm.pojo.Dictionary">
     update dictionary_inf
     <set>
@@ -62,10 +64,6 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cgl.xyhs.ssm.pojo.Dictionary">
-    update dictionary_inf
-    set goods_type = #{goodsType,jdbcType=TINYINT},
-      name = #{name,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+  
+  
 </mapper>

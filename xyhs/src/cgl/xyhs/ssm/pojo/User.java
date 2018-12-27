@@ -26,7 +26,7 @@ public final class User implements Serializable{
 	
 	private String userPass;
 	
-	private Boolean userStatus;
+	private Integer userStatus;
 	
 	private String userTel;
 	
@@ -68,11 +68,11 @@ public final class User implements Serializable{
 		this.userPass = userPass;
 	}
 
-	public Boolean getUserStatus() {
+	public Integer getUserStatus() {
 		return userStatus;
 	}
 
-	public void setUserStatus(Boolean userStatus) {
+	public void setUserStatus(Integer userStatus) {
 		this.userStatus = userStatus;
 	}
 

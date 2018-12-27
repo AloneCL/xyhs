@@ -6,7 +6,7 @@
     <result column="user_img" jdbcType="VARCHAR" property="userImg" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="user_pass" jdbcType="VARCHAR" property="userPass" />
-    <result column="user_status" jdbcType="BIT" property="userStatus" />
+    <result column="user_status" jdbcType="INTEGER" property="userStatus" />
     <result column="user_tel" jdbcType="VARCHAR" property="userTel" />
     <result column="user_address" jdbcType="VARCHAR" property="userAddress" />
     <result column="user_post_address" jdbcType="VARCHAR" property="userPostAddress" />
@@ -26,8 +26,19 @@
   
   <select id="selectByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
-    <!-- <include refid="Base" -->
+     <include refid="Base_Column_List"/>
+     from user_inf
+     where user_name = #{name,jdbcType=VARCHAR}
   </select>   
+  
+  <select id="selectPage" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+          select * from user_inf order by user_id limit #{page,jdbcType=INTEGER},10 
+   </select>
+   
+   <select id="selectByStatus" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select * from user_inf where user_status = #{status,jdbcType=INTEGER}
+   </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user_inf
     where user_id = #{userId,jdbcType=INTEGER}
@@ -39,7 +50,7 @@
       user_address, user_post_address, user_starLevel
       )
     values (#{userId,jdbcType=INTEGER}, #{userImg,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
-      #{userPass,jdbcType=VARCHAR}, #{userStatus,jdbcType=BIT}, #{userTel,jdbcType=VARCHAR}, 
+      #{userPass,jdbcType=VARCHAR}, #{userStatus,jdbcType=INTEGER}, #{userTel,jdbcType=VARCHAR}, 
       #{userAddress,jdbcType=VARCHAR}, #{userPostAddress,jdbcType=VARCHAR}, #{userStarlevel,jdbcType=DOUBLE}
       )
   </insert>
@@ -89,7 +100,7 @@
         #{userPass,jdbcType=VARCHAR},
       </if>
       <if test="userStatus != null">
-        #{userStatus,jdbcType=BIT},
+        #{userStatus,jdbcType=INTEGER},
       </if>
       <if test="userTel != null">
         #{userTel,jdbcType=VARCHAR},
@@ -119,7 +130,7 @@
         user_pass = #{userPass,jdbcType=VARCHAR},
       </if>
       <if test="userStatus != null">
-        user_status = #{userStatus,jdbcType=BIT},
+        user_status = #{userStatus,jdbcType=INTEGER},
       </if>
       <if test="userTel != null">
         user_tel = #{userTel,jdbcType=VARCHAR},
@@ -136,16 +147,30 @@
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
+  
   <update id="updateByPrimaryKey" parameterType="cgl.xyhs.ssm.pojo.User">
     update user_inf
     set user_img = #{userImg,jdbcType=VARCHAR},
       user_name = #{userName,jdbcType=VARCHAR},
       user_pass = #{userPass,jdbcType=VARCHAR},
-      user_status = #{userStatus,jdbcType=BIT},
+      user_status = #{userStatus,jdbcType=INTEGER},
       user_tel = #{userTel,jdbcType=VARCHAR},
       user_address = #{userAddress,jdbcType=VARCHAR},
       user_post_address = #{userPostAddress,jdbcType=VARCHAR},
       user_starLevel = #{userStarlevel,jdbcType=DOUBLE}
     where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateByUserTel" parameterType="cgl.xyhs.ssm.pojo.User">
+     update user_inf
+    set user_img = #{userImg,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      user_pass = #{userPass,jdbcType=VARCHAR},
+      user_status = #{userStatus,jdbcType=INTEGER},
+      user_tel = #{userTel,jdbcType=VARCHAR},
+      user_address = #{userAddress,jdbcType=VARCHAR},
+      user_post_address = #{userPostAddress,jdbcType=VARCHAR},
+      user_starLevel = #{userStarlevel,jdbcType=DOUBLE}
+    where user_tel = #{userTel,jdbcType=INTEGER}
   </update>
 </mapper>
