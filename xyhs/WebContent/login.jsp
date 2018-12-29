@@ -17,7 +17,7 @@
 				src="image/mistore_logo.png" alt=""></a>
 		</div>
 	</div>
-	<form method="post" action="submitLogin.action" class="form center">
+	<form method="post" action="submitLogin.action" class="form center" onsubmit="return checkForm()">
 		<div class="login">
 			<div class="login_center">
 				<div class="login_top">
@@ -30,12 +30,12 @@
 				</div>
 				<div class="login_main center">
 					<div class="username">
-						用户名:&nbsp;<input class="shurukuang" type="text" name="userName"
-							placeholder="请输入你的用户名" />
+						账&nbsp;&nbsp;&nbsp;&nbsp;号:&nbsp;<input class="shurukuang" type="text" name="userAccount" id="name" onblur="checkeName()"
+							placeholder="请输入你的用户名" /><br/><span id="nameSpan" style="margin-left: 55px;"></span>
 					</div>
 					<div class="username">
-						密&nbsp;&nbsp;&nbsp;&nbsp;码:&nbsp;<input class="shurukuang"
-							type="password" name="userPass" placeholder="请输入你的密码" />
+						密&nbsp;&nbsp;&nbsp;&nbsp;码:&nbsp;<input class="shurukuang" id="password" onblur="checkePassWord()"
+							type="password" name="userPass" placeholder="请输入你的密码" /><br/><span id="passWordSpan" style="margin-left: 55px;"></span>
 					</div>
 					<div class="username">
 						<div class="left fl">
@@ -86,6 +86,48 @@
 					flushValidateCode();
 				}
 			})
+		}
+		
+		function checkeName()
+		{   
+			var  name = document.getElementById("name").value;
+			var nameSpan = document.getElementById("nameSpan");
+			var reg=/^[1][3,4,5,7,8][0-9]{9}$/;
+			/* if(name.length<1){
+				nameSpan.innerHTML="<font size='2' color='red'>用户名不能为空</font>"
+			}else if(name.length<6){
+				nameSpan.innerHTML="<font size='2' color='red'>用户名要至少六位</font>"
+			}else  */
+			if(!reg.test(name)){
+				nameSpan.innerHTML="<font size='2' color='red'>请输入正确的手机号</font>"
+			}else{
+				nameSpan.innerHTML="<font size='2' color='green'>符合要求</font>"
+				return true;
+			}
+		}
+
+		function checkePassWord(){
+			var pass = document.getElementById("password").value;
+			var passWordSpan = document.getElementById("passWordSpan");
+			if(pass.length<1){
+				passWordSpan.innerHTML="<font size='2' color='red'>密码不能为空</font>"
+			}else if (pass.length<6) {
+				passWordSpan.innerHTML="<font size='2' color='red'>密码至少6位</font>"
+			}else if(pass.length>16){
+				passWordSpan.innerHTML="<font size='2' color='red'>密码最长为16位</font>"
+			}else{
+				passWordSpan.innerHTML="<font size='2' color='green'>符合要求</font>"
+				return true;
+			}
+		}
+		
+		function checkForm(){
+	        var  name = document.getElementById("name").value;
+			if(checkeName()&&checkePassWord()){
+				return true;
+			}
+			alert("账号密码不符和规范");
+			return false;
 		}
 	</script>
 </body>

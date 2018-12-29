@@ -31,6 +31,13 @@
      where user_name = #{name,jdbcType=VARCHAR}
   </select>   
   
+   <select id="selectByUserCount" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+     <include refid="Base_Column_List"/>
+     from user_inf
+     where user_account = #{account,jdbcType=VARCHAR}
+  </select>   
+  
   <select id="selectPage" resultMap="BaseResultMap" parameterType="java.lang.Integer">
           select * from user_inf order by user_id limit #{page,jdbcType=INTEGER},10 
    </select>

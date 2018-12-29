@@ -33,6 +33,12 @@ public interface UserMapper {
     User selectByUserName(String name);
     
     /**
+     * 根据用户账号选择用户
+     * @param count
+     * @return
+     */
+    User selectByUserCount(String count);
+    /**
       * 分页查询
      * @param 页号
      * @return

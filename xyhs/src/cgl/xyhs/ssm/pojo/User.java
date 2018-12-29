@@ -22,6 +22,8 @@ public final class User implements Serializable{
 	
 	private String userImg;
 	
+	private String userAccount;
+	
 	private String userName;
 	
 	private String userPass;
@@ -106,5 +108,19 @@ public final class User implements Serializable{
 
 	public void setUserStarlevel(Double userStarlevel) {
 		this.userStarlevel = userStarlevel;
+	}
+
+	/**
+	 * @return the userAccount
+	 */
+	public String getUserAccount() {
+		return userAccount;
+	}
+
+	/**
+	 * @param userAccount the userAccount to set
+	 */
+	public void setUserAccount(String userAccount) {
+		this.userAccount = userAccount;
 	}
 }

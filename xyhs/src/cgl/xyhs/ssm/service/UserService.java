@@ -16,8 +16,15 @@ import cgl.xyhs.ssm.pojo.User;
  */
 
 public interface UserService {
-      
-	boolean login(User vo);
+    
+	/**
+	 * 把返回类型设为int类型 用来标识不同的错误情况
+	 * 1代表账号密码错误
+	 * 2代表后台验证账号密码格式规范不通过
+	 * @param vo
+	 * @return
+	 */
+	int login(User vo);
       
     int addUser(User vo);
     

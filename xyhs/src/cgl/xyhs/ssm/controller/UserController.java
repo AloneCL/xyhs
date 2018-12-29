@@ -33,10 +33,12 @@ public class UserController implements FinalConstant {
 		String error = request.getParameter(REQUEST_ERROR_INFO);
 
 		if (error != null) {
-			if (error.equals("1")) {
+			if (error.equals(LOGIN_ERROR_PASS)) {
 				model.addAttribute(REQUEST_ERROR_INFO, "账号密码错误");
-			} else if (error.equals("2")) {
+			} else if (error.equals(LOGIN_ERROR_VALIDATE)) {
 				model.addAttribute(REQUEST_ERROR_INFO, "验证码错误");
+			}else {
+				model.addAttribute(REQUEST_ERROR_INFO, "请输入正确的账号密码格式");
 			}
 
 		}
@@ -47,12 +49,15 @@ public class UserController implements FinalConstant {
 	public String submitLogin(Model model, HttpServletRequest request, HttpSession session, User vo) {
 		String cilentCheckCode = request.getParameter(REQUEST_VALIDATECODE);
 		String serverCheckCode = (String) session.getAttribute(session.getId() + SESSION_VALIDATECODE);
+		int result;
 		if (cilentCheckCode.toLowerCase().equals(serverCheckCode.toLowerCase())) {
-			if (service.login(vo)) {
+			if ((result= service.login(vo))== 1) {
 				session.setAttribute(SESSION_LOGINUSER, vo.getUserName());
 				return "/backer/liebiao.jsp";
-			}else {
+			}else if(result == 0){
 				return "redirect:login.action?error="+ LOGIN_ERROR_PASS;
+			}else {
+				return "redirect:login.action?error="+ LOGIN_ERROR_FORMAT;
 			}
 		}
 		return "redirect:login.action?error=" + LOGIN_ERROR_VALIDATE;

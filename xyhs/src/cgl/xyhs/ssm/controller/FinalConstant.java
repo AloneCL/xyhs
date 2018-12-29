@@ -40,4 +40,9 @@ public interface FinalConstant {
 	 * 登陆时验证码错误的错误类型
 	 */
 	String LOGIN_ERROR_VALIDATE = "2";
+	
+	/**
+	 * 后端账号密码格式验证
+	 */
+	String LOGIN_ERROR_FORMAT = "3";
 }
