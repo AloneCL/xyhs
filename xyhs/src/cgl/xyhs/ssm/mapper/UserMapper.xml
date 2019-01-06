@@ -1,183 +1,267 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cgl.xyhs.ssm.mapper.UserMapper">
-  <resultMap id="BaseResultMap" type="cgl.xyhs.ssm.pojo.User">
-    <id column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="user_img" jdbcType="VARCHAR" property="userImg" />
-    <result column="user_name" jdbcType="VARCHAR" property="userName" />
-    <result column="user_pass" jdbcType="VARCHAR" property="userPass" />
-    <result column="user_status" jdbcType="INTEGER" property="userStatus" />
-    <result column="user_tel" jdbcType="VARCHAR" property="userTel" />
-    <result column="user_address" jdbcType="VARCHAR" property="userAddress" />
-    <result column="user_post_address" jdbcType="VARCHAR" property="userPostAddress" />
-    <result column="user_starLevel" jdbcType="DOUBLE" property="userStarlevel" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    user_id, user_img, user_name, user_pass, user_status, user_tel, user_address, user_post_address, 
-    user_starLevel
-  </sql>
-  
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from user_inf
-    where user_id = #{userId,jdbcType=INTEGER}
-  </select>
-  
-  <select id="selectByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-     <include refid="Base_Column_List"/>
-     from user_inf
-     where user_name = #{name,jdbcType=VARCHAR}
-  </select>   
-  
-   <select id="selectByUserCount" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-     <include refid="Base_Column_List"/>
-     from user_inf
-     where user_account = #{account,jdbcType=VARCHAR}
-  </select>   
-  
-  <select id="selectPage" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-          select * from user_inf order by user_id limit #{page,jdbcType=INTEGER},10 
-   </select>
-   
-   <select id="selectByStatus" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-        select * from user_inf where user_status = #{status,jdbcType=INTEGER}
-   </select>
-  
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user_inf
-    where user_id = #{userId,jdbcType=INTEGER}
-  </delete>
-  
-  <insert id="insert" parameterType="cgl.xyhs.ssm.pojo.User">
-    insert into user_inf (user_id, user_img, user_name, 
-      user_pass, user_status, user_tel, 
-      user_address, user_post_address, user_starLevel
-      )
-    values (#{userId,jdbcType=INTEGER}, #{userImg,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
-      #{userPass,jdbcType=VARCHAR}, #{userStatus,jdbcType=INTEGER}, #{userTel,jdbcType=VARCHAR}, 
-      #{userAddress,jdbcType=VARCHAR}, #{userPostAddress,jdbcType=VARCHAR}, #{userStarlevel,jdbcType=DOUBLE}
-      )
-  </insert>
-  
-  <insert id="insertSelective" parameterType="cgl.xyhs.ssm.pojo.User">
-    insert into user_inf
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
-        user_id,
-      </if>
-      <if test="userImg != null">
-        user_img,
-      </if>
-      <if test="userName != null">
-        user_name,
-      </if>
-      <if test="userPass != null">
-        user_pass,
-      </if>
-      <if test="userStatus != null">
-        user_status,
-      </if>
-      <if test="userTel != null">
-        user_tel,
-      </if>
-      <if test="userAddress != null">
-        user_address,
-      </if>
-      <if test="userPostAddress != null">
-        user_post_address,
-      </if>
-      <if test="userStarlevel != null">
-        user_starLevel,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="userImg != null">
-        #{userImg,jdbcType=VARCHAR},
-      </if>
-      <if test="userName != null">
-        #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="userPass != null">
-        #{userPass,jdbcType=VARCHAR},
-      </if>
-      <if test="userStatus != null">
-        #{userStatus,jdbcType=INTEGER},
-      </if>
-      <if test="userTel != null">
-        #{userTel,jdbcType=VARCHAR},
-      </if>
-      <if test="userAddress != null">
-        #{userAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="userPostAddress != null">
-        #{userPostAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="userStarlevel != null">
-        #{userStarlevel,jdbcType=DOUBLE},
-      </if>
-    </trim>
-  </insert>
-  
-  <update id="updateByPrimaryKeySelective" parameterType="cgl.xyhs.ssm.pojo.User">
-    update user_inf
-    <set>
-      <if test="userImg != null">
-        user_img = #{userImg,jdbcType=VARCHAR},
-      </if>
-      <if test="userName != null">
-        user_name = #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="userPass != null">
-        user_pass = #{userPass,jdbcType=VARCHAR},
-      </if>
-      <if test="userStatus != null">
-        user_status = #{userStatus,jdbcType=INTEGER},
-      </if>
-      <if test="userTel != null">
-        user_tel = #{userTel,jdbcType=VARCHAR},
-      </if>
-      <if test="userAddress != null">
-        user_address = #{userAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="userPostAddress != null">
-        user_post_address = #{userPostAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="userStarlevel != null">
-        user_starLevel = #{userStarlevel,jdbcType=DOUBLE},
-      </if>
-    </set>
-    where user_id = #{userId,jdbcType=INTEGER}
-  </update>
-  
-  <update id="updateByPrimaryKey" parameterType="cgl.xyhs.ssm.pojo.User">
-    update user_inf
-    set user_img = #{userImg,jdbcType=VARCHAR},
-      user_name = #{userName,jdbcType=VARCHAR},
-      user_pass = #{userPass,jdbcType=VARCHAR},
-      user_status = #{userStatus,jdbcType=INTEGER},
-      user_tel = #{userTel,jdbcType=VARCHAR},
-      user_address = #{userAddress,jdbcType=VARCHAR},
-      user_post_address = #{userPostAddress,jdbcType=VARCHAR},
-      user_starLevel = #{userStarlevel,jdbcType=DOUBLE}
-    where user_id = #{userId,jdbcType=INTEGER}
-  </update>
-  
-  <update id="updateByUserTel" parameterType="cgl.xyhs.ssm.pojo.User">
-     update user_inf
-    set user_img = #{userImg,jdbcType=VARCHAR},
-      user_name = #{userName,jdbcType=VARCHAR},
-      user_pass = #{userPass,jdbcType=VARCHAR},
-      user_status = #{userStatus,jdbcType=INTEGER},
-      user_tel = #{userTel,jdbcType=VARCHAR},
-      user_address = #{userAddress,jdbcType=VARCHAR},
-      user_post_address = #{userPostAddress,jdbcType=VARCHAR},
-      user_starLevel = #{userStarlevel,jdbcType=DOUBLE}
-    where user_tel = #{userTel,jdbcType=INTEGER}
-  </update>
+	<resultMap id="BaseResultMap" type="cgl.xyhs.ssm.pojo.User">
+		<id column="user_id" jdbcType="INTEGER" property="userId" />
+		<result column="user_img" jdbcType="VARCHAR" property="userImg" />
+		<result column="user_name" jdbcType="VARCHAR"
+			property="userName" />
+		<result column="user_pass" jdbcType="VARCHAR"
+			property="userPass" />
+		<result column="user_status" jdbcType="INTEGER"
+			property="userStatus" />
+		<result column="user_account" jdbcType="VARCHAR"
+			property="userAccount" />
+		<result column="user_tel" jdbcType="VARCHAR" property="userTel" />
+		<result column="user_address" jdbcType="VARCHAR"
+			property="userAddress" />
+		<result column="user_post_address" jdbcType="VARCHAR"
+			property="userPostAddress" />
+		<result column="user_starLevel" jdbcType="DOUBLE"
+			property="userStarlevel" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		user_id, user_img, user_name, user_pass, user_status,
+		user_tel, user_address,
+		user_post_address,user_account,
+		user_starLevel
+	</sql>
+
+	<select id="selectByPrimaryKey"
+		parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from user_inf
+		where user_id = #{userId,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectByUserName" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from user_inf
+		where user_name = #{name,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectByUserCount" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from user_inf
+		where user_account = #{account,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectPage" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select * from user_inf order by user_id limit
+		#{page,jdbcType=INTEGER},10
+	</select>
+
+	<select id="selectByStatus" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select * from user_inf where user_status =
+		#{status,jdbcType=INTEGER}
+	</select>
+
+	<delete id="deleteByPrimaryKey"
+		parameterType="java.lang.Integer">
+		delete from user_inf
+		where user_id =
+		#{userId,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insert" parameterType="cgl.xyhs.ssm.pojo.User">
+		insert into user_inf (user_id,
+		user_img, user_name,
+		user_pass, user_status, user_tel,
+		user_address,
+		user_post_address, user_starLevel
+		)
+		values (#{userId,jdbcType=INTEGER},
+		#{userImg,jdbcType=VARCHAR},
+		#{userName,jdbcType=VARCHAR},
+		#{userPass,jdbcType=VARCHAR}, #{userStatus,jdbcType=INTEGER},
+		#{userTel,jdbcType=VARCHAR},
+		#{userAddress,jdbcType=VARCHAR},
+		#{userPostAddress,jdbcType=VARCHAR},
+		#{userStarlevel,jdbcType=DOUBLE}
+		)
+	</insert>
+
+	<insert id="insertSelective"
+		parameterType="cgl.xyhs.ssm.pojo.User">
+		insert into user_inf
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="userImg != null">
+				user_img,
+			</if>
+			<if test="userName != null">
+				user_name,
+			</if>
+			<if test="userPass != null">
+				user_pass,
+			</if>
+			<if test="userStatus != null">
+				user_status,
+			</if>
+			<if test="userAccount != null">
+				user_account,
+			</if>
+			<if test="userTel != null">
+				user_tel,
+			</if>
+			<if test="userAddress != null">
+				user_address,
+			</if>
+			<if test="userPostAddress != null">
+				user_post_address,
+			</if>
+			<if test="userStarlevel != null">
+				user_starLevel,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				#{userId,jdbcType=INTEGER},
+			</if>
+			<if test="userImg != null">
+				#{userImg,jdbcType=VARCHAR},
+			</if>
+			<if test="userName != null">
+				#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="userPass != null">
+				#{userPass,jdbcType=VARCHAR},
+			</if>
+			<if test="userStatus != null">
+				#{userStatus,jdbcType=INTEGER},
+			</if>
+			<if test="userAccount != null">
+				#{userAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="userTel != null">
+				#{userTel,jdbcType=VARCHAR},
+			</if>
+			<if test="userAddress != null">
+				#{userAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="userPostAddress != null">
+				#{userPostAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="userStarlevel != null">
+				#{userStarlevel,jdbcType=DOUBLE},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective"
+		parameterType="cgl.xyhs.ssm.pojo.User">
+		update user_inf
+		<set>
+			<if test="userImg != null">
+				user_img = #{userImg,jdbcType=VARCHAR},
+			</if>
+			<if test="userName != null">
+				user_name = #{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="userPass != null">
+				user_pass = #{userPass,jdbcType=VARCHAR},
+			</if>
+			<if test="userStatus != null">
+				user_status = #{userStatus,jdbcType=INTEGER},
+			</if>
+			<if test="userAccount != null">
+			     user_account = #{userAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="userTel != null">
+				user_tel = #{userTel,jdbcType=VARCHAR},
+			</if>
+			<if test="userAddress != null">
+				user_address = #{userAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="userPostAddress != null">
+				user_post_address = #{userPostAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="userStarlevel != null">
+				user_starLevel = #{userStarlevel,jdbcType=DOUBLE},
+			</if>
+		</set>
+		where user_id = #{userId,jdbcType=INTEGER}
+	</update>
+     
+     <update id="updateByUserAccount"
+		parameterType="cgl.xyhs.ssm.pojo.User">
+		update user_inf
+		<set>
+			<if test="userImg != null">
+				user_img = #{userImg,jdbcType=VARCHAR},
+			</if>
+			<if test="userName != null">
+				user_name = #{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="userPass != null">
+				user_pass = #{userPass,jdbcType=VARCHAR},
+			</if>
+			<if test="userStatus != null">
+				user_status = #{userStatus,jdbcType=INTEGER},
+			</if>
+			<if test="userAccount != null">
+			     user_account = #{userAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="userTel != null">
+				user_tel = #{userTel,jdbcType=VARCHAR},
+			</if>
+			<if test="userAddress != null">
+				user_address = #{userAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="userPostAddress != null">
+				user_post_address = #{userPostAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="userStarlevel != null">
+				user_starLevel = #{userStarlevel,jdbcType=DOUBLE},
+			</if>
+		</set>
+		where user_account = #{userAccount,jdbcType=INTEGER}
+	</update>
+     
+	<update id="updateByPrimaryKey"
+		parameterType="cgl.xyhs.ssm.pojo.User">
+		update user_inf
+		set user_img =
+		#{userImg,jdbcType=VARCHAR},
+		user_name = #{userName,jdbcType=VARCHAR},
+		user_pass = #{userPass,jdbcType=VARCHAR},
+		user_status =
+		#{userStatus,jdbcType=INTEGER},
+		user_tel = #{userTel,jdbcType=VARCHAR},
+		user_address = #{userAddress,jdbcType=VARCHAR},
+		user_post_address =
+		#{userPostAddress,jdbcType=VARCHAR},
+		user_starLevel =
+		#{userStarlevel,jdbcType=DOUBLE}
+		where user_id =
+		#{userId,jdbcType=INTEGER}
+	</update>
+
+	<update id="updateByUserTel"
+		parameterType="cgl.xyhs.ssm.pojo.User">
+		update user_inf
+		set user_img =
+		#{userImg,jdbcType=VARCHAR},
+		user_name = #{userName,jdbcType=VARCHAR},
+		user_pass = #{userPass,jdbcType=VARCHAR},
+		user_status =
+		#{userStatus,jdbcType=INTEGER},
+		user_tel = #{userTel,jdbcType=VARCHAR},
+		user_address = #{userAddress,jdbcType=VARCHAR},
+		user_post_address =
+		#{userPostAddress,jdbcType=VARCHAR},
+		user_starLevel =
+		#{userStarlevel,jdbcType=DOUBLE}
+		where user_tel =
+		#{userTel,jdbcType=INTEGER}
+	</update>
 </mapper>

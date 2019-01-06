@@ -106,4 +106,16 @@ public final class Goods implements Serializable{
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Goods [goodsId=" + goodsId + ", goodsName=" + goodsName + ", goodsType=" + goodsType + ", goodsStatus="
+				+ goodsStatus + ", upTime=" + upTime + ", price=" + price + ", goodsImg=" + goodsImg + ", introduce="
+				+ introduce + ", userId=" + userId + "]";
+	}
+    
+    
 }

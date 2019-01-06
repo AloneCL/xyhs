@@ -30,22 +30,27 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int login(User vo) {
-		User u = mapper.selectByUserName(vo.getUserAccount());
-		if (!isMobile(vo.getUserAccount()) || vo.getUserPass().isEmpty() || vo.getUserPass().length()>16)
+		User u = mapper.selectByUserCount(vo.getUserAccount());
+		if (!isMobile(vo.getUserAccount()) || vo.getUserPass().isEmpty() || vo.getUserPass().length() > 16)
 			return 2;
-			if (u != null) {
-				if (u.getUserPass().equals(vo.getUserPass())) {
-					return 1;
-				}
+		if (u != null) {
+			if (u.getUserPass().equals(vo.getUserPass())) {
+				return 1;
 			}
+		}
 		return 0;
 	}
 
 	@Override
 	public int addUser(User vo) {
+		User u = mapper.selectByUserCount(vo.getUserAccount());
+		if (u != null)
+			return 0;
+		if (!isMobile(vo.getUserAccount()) || !checkFormat(vo.getUserName()) ||vo.getUserPass().isEmpty() || vo.getUserPass().length() > 16)
+			return 2;
 		vo.setUserStarlevel(4.0);
 		vo.setUserStatus(0);
-
+		vo.setUserTel(vo.getUserAccount());
 		return mapper.insertSelective(vo);
 	}
 
@@ -66,10 +71,20 @@ public class UserServiceImpl implements UserService {
 	public int updateByUserTel(User vo) {
 		return mapper.updateByUserTel(vo);
 	}
-
+    
+	@Override
+	public int updateByUserAccount(User vo) {
+		return mapper.updateByUserAccount(vo);
+	}
+	
 	@Override
 	public int updateByPrimary(User vo) {
 		return mapper.updateByPrimaryKeySelective(vo);
+	}
+	
+	@Override
+	public User getInfoByAccount(String account) {
+		return mapper.selectByUserCount(account);
 	}
 
 	@Override
@@ -81,13 +96,14 @@ public class UserServiceImpl implements UserService {
 	public List<User> getBypage(Integer page) {
 		return mapper.selectPage(page);
 	}
-    
+
 	/**
 	 * 手机号码验证
+	 * 
 	 * @param str
-	 * @return  验证通过返回true
+	 * @return 验证通过返回true
 	 */
-	public static boolean isMobile(final String str) {
+	public static boolean isMobile(String str) {
 		Pattern p = null;
 		Matcher m = null;
 		boolean b = false;
@@ -96,5 +112,22 @@ public class UserServiceImpl implements UserService {
 		b = m.matches();
 		return b;
 	}
+	
+	/**
+	 * 用户名格式后台验证
+	 * @param str
+	 * @return
+	 */
+	public static boolean checkFormat(String str) {
+		Pattern p = null;
+		Matcher m = null;
+		boolean b = false;
+		p = Pattern.compile("[0-9A-Za-z_]*"); // 验证组成格式
+		m = p.matcher(str);
+		b = m.matches();
+		return b;
+	}
+
+	
 
 }

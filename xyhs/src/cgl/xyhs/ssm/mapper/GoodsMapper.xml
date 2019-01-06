@@ -1,142 +1,245 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cgl.xyhs.ssm.mapper.GoodsMapper">
-  <resultMap id="BaseResultMap" type="cgl.xyhs.ssm.pojo.Goods">
-    <id column="goods_id" jdbcType="INTEGER" property="goodsId" />
-    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
-    <result column="goods_type" jdbcType="INTEGER" property="goodsType" />
-    <result column="goods_status" jdbcType="INTEGER" property="goodsStatus" />
-    <result column="up_time" jdbcType="TIMESTAMP" property="upTime" />
-    <result column="price" jdbcType="DOUBLE" property="price" />
-    <result column="goods_img" jdbcType="VARCHAR" property="goodsImg" />
-    <result column="introduce" jdbcType="VARCHAR" property="introduce" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    goods_id, goods_name, goods_type, goods_status, up_time, price, goods_img, introduce, 
-    user_id
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from goods_inf
-    where goods_id = #{goodsId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from goods_inf
-    where goods_id = #{goodsId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="cgl.xyhs.ssm.pojo.Goods">
-    insert into goods_inf (goods_id, goods_name, goods_type, 
-      goods_status, up_time, price, 
-      goods_img, introduce, user_id
-      )
-    values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsType,jdbcType=INTEGER}, 
-      #{goodsStatus,jdbcType=INTEGER}, #{upTime,jdbcType=TIMESTAMP}, #{price,jdbcType=DOUBLE}, 
-      #{goodsImg,jdbcType=VARCHAR}, #{introduce,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="cgl.xyhs.ssm.pojo.Goods">
-    insert into goods_inf
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="goodsId != null">
-        goods_id,
-      </if>
-      <if test="goodsName != null">
-        goods_name,
-      </if>
-      <if test="goodsType != null">
-        goods_type,
-      </if>
-      <if test="goodsStatus != null">
-        goods_status,
-      </if>
-      <if test="upTime != null">
-        up_time,
-      </if>
-      <if test="price != null">
-        price,
-      </if>
-      <if test="goodsImg != null">
-        goods_img,
-      </if>
-      <if test="introduce != null">
-        introduce,
-      </if>
-      <if test="userId != null">
-        user_id,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="goodsId != null">
-        #{goodsId,jdbcType=INTEGER},
-      </if>
-      <if test="goodsName != null">
-        #{goodsName,jdbcType=VARCHAR},
-      </if>
-      <if test="goodsType != null">
-        #{goodsType,jdbcType=INTEGER},
-      </if>
-      <if test="goodsStatus != null">
-        #{goodsStatus,jdbcType=INTEGER},
-      </if>
-      <if test="upTime != null">
-        #{upTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="price != null">
-        #{price,jdbcType=DOUBLE},
-      </if>
-      <if test="goodsImg != null">
-        #{goodsImg,jdbcType=VARCHAR},
-      </if>
-      <if test="introduce != null">
-        #{introduce,jdbcType=VARCHAR},
-      </if>
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cgl.xyhs.ssm.pojo.Goods">
-    update goods_inf
-    <set>
-      <if test="goodsName != null">
-        goods_name = #{goodsName,jdbcType=VARCHAR},
-      </if>
-      <if test="goodsType != null">
-        goods_type = #{goodsType,jdbcType=INTEGER},
-      </if>
-      <if test="goodsStatus != null">
-        goods_status = #{goodsStatus,jdbcType=INTEGER},
-      </if>
-      <if test="upTime != null">
-        up_time = #{upTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="price != null">
-        price = #{price,jdbcType=DOUBLE},
-      </if>
-      <if test="goodsImg != null">
-        goods_img = #{goodsImg,jdbcType=VARCHAR},
-      </if>
-      <if test="introduce != null">
-        introduce = #{introduce,jdbcType=VARCHAR},
-      </if>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=INTEGER},
-      </if>
-    </set>
-    where goods_id = #{goodsId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="cgl.xyhs.ssm.pojo.Goods">
-    update goods_inf
-    set goods_name = #{goodsName,jdbcType=VARCHAR},
-      goods_type = #{goodsType,jdbcType=INTEGER},
-      goods_status = #{goodsStatus,jdbcType=INTEGER},
-      up_time = #{upTime,jdbcType=TIMESTAMP},
-      price = #{price,jdbcType=DOUBLE},
-      goods_img = #{goodsImg,jdbcType=VARCHAR},
-      introduce = #{introduce,jdbcType=VARCHAR},
-      user_id = #{userId,jdbcType=INTEGER}
-    where goods_id = #{goodsId,jdbcType=INTEGER}
-  </update>
+	<resultMap id="BaseResultMap" type="cgl.xyhs.ssm.pojo.Goods">
+		<id column="goods_id" jdbcType="INTEGER" property="goodsId" />
+		<result column="goods_name" jdbcType="VARCHAR"
+			property="goodsName" />
+		<result column="goods_type" jdbcType="INTEGER"
+			property="goodsType" />
+		<result column="goods_status" jdbcType="INTEGER"
+			property="goodsStatus" />
+		<result column="up_time" jdbcType="TIMESTAMP" property="upTime" />
+		<result column="price" jdbcType="DOUBLE" property="price" />
+		<result column="goods_img" jdbcType="VARCHAR"
+			property="goodsImg" />
+		<result column="introduce" jdbcType="VARCHAR"
+			property="introduce" />
+		<result column="user_id" jdbcType="INTEGER" property="userId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		goods_id, goods_name, goods_type, goods_status, up_time,
+		price, goods_img,
+		introduce,
+		user_id
+	</sql>
+
+	<select id="selectByPrimaryKey"
+		parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from goods_inf
+		where goods_id = #{goodsId,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectPage" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from goods_inf
+		where goods_type = #{type,jdbcType=INTEGER} order by
+		goods_id limit
+		#{start,jdbcType=INTEGER},#{end,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectByStatu" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from goods_inf
+		where goods_status = #{statu,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectByType" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from goods_inf
+		where goods_type = #{type,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectByUser" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from goods_inf
+		where goods_id = #{id,jdbcType=INTEGER} order by
+		goods_id limit
+		#{start,jdbcType=INTEGER},#{end,jdbcType=INTEGER}
+	</select>
+
+	<select id="searchTypeCount" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from goods_inf where goods_type = #{type,jdbcType=INTEGER}
+	</select>
+
+	<select id="searchGoodsCount" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) from goods_inf where user_id = #{id,jdbcType=INTEGER}
+	</select>
+
+	<delete id="deleteByPrimaryKey"
+		parameterType="java.lang.Integer">
+		delete from goods_inf
+		where goods_id =
+		#{goodsId,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insert" parameterType="cgl.xyhs.ssm.pojo.Goods">
+		insert into goods_inf
+		(goods_id, goods_name, goods_type,
+		goods_status, up_time, price,
+		goods_img, introduce, user_id
+		)
+		values (#{goodsId,jdbcType=INTEGER},
+		#{goodsName,jdbcType=VARCHAR},
+		#{goodsType,jdbcType=INTEGER},
+		#{goodsStatus,jdbcType=INTEGER}, #{upTime,jdbcType=TIMESTAMP},
+		#{price,jdbcType=DOUBLE},
+		#{goodsImg,jdbcType=VARCHAR},
+		#{introduce,jdbcType=VARCHAR},
+		#{userId,jdbcType=INTEGER}
+		)
+	</insert>
+
+	<insert id="insertSelective"
+		parameterType="cgl.xyhs.ssm.pojo.Goods">
+		insert into goods_inf
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="goodsId != null">
+				goods_id,
+			</if>
+			<if test="goodsName != null">
+				goods_name,
+			</if>
+			<if test="goodsType != null">
+				goods_type,
+			</if>
+			<if test="goodsStatus != null">
+				goods_status,
+			</if>
+			<if test="upTime != null">
+				up_time,
+			</if>
+			<if test="price != null">
+				price,
+			</if>
+			<if test="goodsImg != null">
+				goods_img,
+			</if>
+			<if test="introduce != null">
+				introduce,
+			</if>
+			<if test="userId != null">
+				user_id,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="goodsId != null">
+				#{goodsId,jdbcType=INTEGER},
+			</if>
+			<if test="goodsName != null">
+				#{goodsName,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsType != null">
+				#{goodsType,jdbcType=INTEGER},
+			</if>
+			<if test="goodsStatus != null">
+				#{goodsStatus,jdbcType=INTEGER},
+			</if>
+			<if test="upTime != null">
+				#{upTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="price != null">
+				#{price,jdbcType=DOUBLE},
+			</if>
+			<if test="goodsImg != null">
+				#{goodsImg,jdbcType=VARCHAR},
+			</if>
+			<if test="introduce != null">
+				#{introduce,jdbcType=VARCHAR},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective"
+		parameterType="cgl.xyhs.ssm.pojo.Goods">
+		update goods_inf
+		<set>
+			<if test="goodsName != null">
+				goods_name = #{goodsName,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsType != null">
+				goods_type = #{goodsType,jdbcType=INTEGER},
+			</if>
+			<if test="goodsStatus != null">
+				goods_status = #{goodsStatus,jdbcType=INTEGER},
+			</if>
+			<if test="upTime != null">
+				up_time = #{upTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="price != null">
+				price = #{price,jdbcType=DOUBLE},
+			</if>
+			<if test="goodsImg != null">
+				goods_img = #{goodsImg,jdbcType=VARCHAR},
+			</if>
+			<if test="introduce != null">
+				introduce = #{introduce,jdbcType=VARCHAR},
+			</if>
+			<if test="userId != null">
+				user_id = #{userId,jdbcType=INTEGER},
+			</if>
+		</set>
+		where goods_id = #{goodsId,jdbcType=INTEGER}
+	</update>
+
+	<update id="updateByUser"
+		parameterType="cgl.xyhs.ssm.pojo.Goods">
+		update goods_inf
+		<set>
+			<if test="goodsName != null">
+				goods_name = #{goodsName,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsType != null">
+				goods_type = #{goodsType,jdbcType=INTEGER},
+			</if>
+			<if test="goodsStatus != null">
+				goods_status = #{goodsStatus,jdbcType=INTEGER},
+			</if>
+			<if test="upTime != null">
+				up_time = #{upTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="price != null">
+				price = #{price,jdbcType=DOUBLE},
+			</if>
+			<if test="goodsImg != null">
+				goods_img = #{goodsImg,jdbcType=VARCHAR},
+			</if>
+			<if test="introduce != null">
+				introduce = #{introduce,jdbcType=VARCHAR},
+			</if>
+			<if test="userId != null">
+				user_id = #{userId,jdbcType=INTEGER},
+			</if>
+		</set>
+		where user_id = #{userId,jdbcType=INTEGER} and goods_id =
+		#{goodsId,jdbcType=INTEGER}
+	</update>
+
+	<update id="updateByPrimaryKey"
+		parameterType="cgl.xyhs.ssm.pojo.Goods">
+		update goods_inf
+		set goods_name =
+		#{goodsName,jdbcType=VARCHAR},
+		goods_type =
+		#{goodsType,jdbcType=INTEGER},
+		goods_status =
+		#{goodsStatus,jdbcType=INTEGER},
+		up_time =
+		#{upTime,jdbcType=TIMESTAMP},
+		price = #{price,jdbcType=DOUBLE},
+		goods_img = #{goodsImg,jdbcType=VARCHAR},
+		introduce =
+		#{introduce,jdbcType=VARCHAR},
+		user_id = #{userId,jdbcType=INTEGER}
+		where goods_id = #{goodsId,jdbcType=INTEGER}
+	</update>
 </mapper>

@@ -58,6 +58,13 @@ public interface UserMapper {
      * @return  修改结果
      */
     int updateByUserTel(User record);
+    
+    /**
+     * 根据用户账号修改密码
+     * @param record
+     * @return
+     */
+    int updateByUserAccount(User record);
 
     int updateByPrimaryKeySelective(User record);
 

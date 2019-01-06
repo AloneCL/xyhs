@@ -34,9 +34,13 @@ public interface UserService {
     
     int updateByUserTel(User vo);
     
+    int updateByUserAccount(User vo);
+    
     int updateByPrimary(User vo);
     
     User getInfo(Integer id);
+    
+    User getInfoByAccount(String account);
     
     List<User> getBypage(Integer page);
       

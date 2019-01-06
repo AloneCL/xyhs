@@ -16,8 +16,8 @@ import java.lang.annotation.Target;
 * @author: CGL
 * @date: 2018年12月28日 下午6:09:28 
  */
-@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
 @Documented
 public @interface UserIsLoginClass {
 

@@ -23,7 +23,7 @@
 				<div class="login_top">
 					<div class="left fl">会员登录</div>
 					<div class="right fr">
-						您还不是我们的会员？<a href="../register.html" target="_self">立即注册</a>
+						您还不是我们的会员？<a href="userRegister.action" target="_self">立即注册</a>
 					</div>
 					<div class="clear"></div>
 					<div class="xian center"></div>

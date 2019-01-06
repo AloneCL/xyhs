@@ -26,7 +26,7 @@
 	<context:component-scan base-package="cgl.xyhs" />
 
 
-	<aop:aspectj-autoproxy proxy-target-class="true" />
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
 	<!--使用mvc:annotation-driven标签替代上两个标签配置 另外该标签会加载很多参数绑定的方法：例如json解析转换器 实际开发使用该标签 -->
 	<mvc:annotation-driven />
 

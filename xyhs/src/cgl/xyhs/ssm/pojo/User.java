@@ -123,4 +123,16 @@ public final class User implements Serializable{
 	public void setUserAccount(String userAccount) {
 		this.userAccount = userAccount;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", userImg=" + userImg + ", userAccount=" + userAccount + ", userName="
+				+ userName + ", userPass=" + userPass + ", userStatus=" + userStatus + ", userTel=" + userTel
+				+ ", userAddress=" + userAddress + ", userPostAddress=" + userPostAddress + ", userStarlevel="
+				+ userStarlevel + "]";
+	}
+	
 }
