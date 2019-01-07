@@ -23,12 +23,12 @@
 					onmouseout="this.style.border='2px solid #fff'"
 					onmousemove="this.style.border='2px solid red'">
 					<div class="sub_mingxing">
-						<a href="./xiangqing.html" target="_blank"><img
+						<a href="${pageContext.request.contextPath}/goodsData.action?goodsdId=${eletric.goodsId}" target="_blank"><img
 							style="height: 100; width: 100;" src="${eletric.goodsImg }"
 							alt=""></a>
 					</div>
 					<div class="pinpai">
-						<a href="./xiangqing.html" target="_blank">${eletric.goodsName }</a>
+						<a href="${pageContext.request.contextPath}/goodsData.action?goodsdId=${eletric.goodsId}" target="_blank">${eletric.goodsName }</a>
 					</div>
 					<div class="youhui">${eletric.introduce }</div>
 					<div class="jiage">${eletric.price}/元</div>
@@ -45,11 +45,11 @@
 					onmouseout="this.style.border='2px solid #fff'"
 					onmousemove="this.style.border='2px solid red'">
 					<div class="sub_mingxing">
-						<a href="./xiangqing.html" target="_blank"><img
+						<a href="${pageContext.request.contextPath}/goodsData.action?goodsdId=${book.goodsId}" target="_blank"><img
 							style="height: 100; width: 100;" src="${book.goodsImg }" alt=""></a>
 					</div>
 					<div class="pinpai">
-						<a href="./xiangqing.html" target="_blank">${book.goodsName }</a>
+						<a href="${pageContext.request.contextPath}/goodsData.action?goodsdId=${book.goodsId}" target="_blank">${book.goodsName }</a>
 					</div>
 					<div class="youhui">${book.introduce }</div>
 					<div class="jiage">${book.price}/元</div>
@@ -65,11 +65,11 @@
 					onmouseout="this.style.border='2px solid #fff'"
 					onmousemove="this.style.border='2px solid red'">
 					<div class="sub_mingxing">
-						<a href="./xiangqing.html" target="_blank"><img
+						<a href="${pageContext.request.contextPath}/goodsData.action?goodsdId=${desk.goodsId}" target="_blank"><img
 							style="height: 100; width: 100;" src="${desk.goodsImg }" alt=""></a>
 					</div>
 					<div class="pinpai">
-						<a href="./xiangqing.html" target="_blank">${desk.goodsName }</a>
+						<a href="${pageContext.request.contextPath}/goodsData.action?goodsdId=${desk.goodsId}" target="_blank">${desk.goodsName }</a>
 					</div>
 					<div class="youhui">${desk.introduce }</div>
 					<div class="jiage">${desk.price}/元</div>

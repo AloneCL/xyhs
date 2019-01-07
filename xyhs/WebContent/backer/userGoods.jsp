@@ -42,7 +42,7 @@
 					<c:forEach items="${goodsList }" var="goods">
 						<div class="myddxq">
 							<div class="myddspt myfl">
-								<img src="./image/gwc_xiaomi6.jpg" alt="">
+								<img style="width: 80px; height: 80px;" src="${goods.goodsImg }" alt="">
 							</div>
 							<div class="ddbh myfl">商品名称: ${goods.goodsName}</div>
 							<div class="ztxx fr">
@@ -62,14 +62,16 @@
 						<td colspan="11">共${totalPage}页&nbsp;共${total}有条记录&nbsp;当前是第${currentPage}页&nbsp;
 							<c:choose>
 								<c:when test="${currentPage != 1 }">
-									<a href="${pageContext.request.contextPath}/searchUserGoods.action?id=${cookie.userId.value }&page=${currentPage-1}">上一页</a>
+									<a style="color:#00F;" onmouseout="this.style.color='#00F'"
+					onmousemove="this.style.color='#F00'" href="${pageContext.request.contextPath}/searchUserGoods.action?id=${cookie.userId.value }&page=${currentPage-1}">上一页</a>
 								</c:when>
 								<c:otherwise>
 						            上一页
 						        </c:otherwise>
 							</c:choose> &nbsp; <c:choose>
 								<c:when test="${currentPage != totalPage }">
-									<a href="${pageContext.request.contextPath}/searchUserGoods.action?id=${cookie.userId.value }&page=${currentPage+1}">下一页</a>
+									<a style="color:#00F;" onmouseout="this.style.color='#00F'"
+					onmousemove="this.style.color='#F00'" href="${pageContext.request.contextPath}/searchUserGoods.action?id=${cookie.userId.value }&page=${currentPage+1}">下一页</a>
 								</c:when>
 								<c:otherwise>
 							   下一页 

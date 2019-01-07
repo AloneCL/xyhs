@@ -3,6 +3,7 @@
  */
 package cgl.xyhs.ssm.serviceImpl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,6 +93,9 @@ public class GoodsServiceImpl implements GoodsService {
 	 */
 	@Override
 	public int addGoods(Goods goods) {
+		goods.setUpTime(new Date());
+		if(goods.getGoodsStatus() == null)
+			goods.setGoodsStatus(1);
 		return mapper.insertSelective(goods);
 	}
 

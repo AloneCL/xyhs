@@ -40,6 +40,12 @@ public class GoodsTest {
 	}
 	
 	@Test
+	public void searchById() {
+	    Goods goods = service.getInfoById(16);
+	    System.out.println(goods);
+	}
+	
+	@Test
 	public void userpageTest() {
 		List<Goods> goodsList = Collections.emptyList();
 		System.out.println(service.searchUserGoodsCount(4));

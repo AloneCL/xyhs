@@ -42,7 +42,7 @@
 						<li><a rel="nofollow" href="${pageContext.request.contextPath}/userInfo.action"
 							target="_blank">个人中心</a></li>
 						<li><a rel="nofollow"
-							href="https://order.mi.com/user/comment" target="_blank">评价晒单</a>
+							href="backer/addGoods.jsp" target="_blank">上传商品</a>
 						</li>
 						<li><a rel="nofollow"
 							href="https://order.mi.com/user/favorite" target="_blank">我的喜欢</a>

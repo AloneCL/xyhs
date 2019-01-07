@@ -5,11 +5,9 @@ package cgl.xyhs.web.aop;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -28,20 +26,20 @@ import cgl.xyhs.ssm.controller.FinalConstant;
 public class UserLoginAspect implements FinalConstant {
 	
 	/*@Pointcut("execution(* cgl.xyhs.ssm.controller..*.*(..))")*/
-	@Pointcut("execution(* cgl.xyhs.ssm.controller..*.*(..))&& (@target(cgl.xysh.web.aop.UserIsLoginClass) ||"+
-			"@annotation(cgl.xysh.web.aop.UserIsLoginMethod))")
+/*	@Pointcut("execution(* cgl.xyhs.ssm.controller..*.*(..))&& (@target(cgl.xysh.web.aop.UserIsLoginClass1) ||"+
+			"@annotation(cgl.xysh.web.aop.UserIsLoginMethod1))")
 	public void checkPointCut() {
-		
-	}
-
-	//@Around("checkPointCut()")
+	}*/
+	
+	@Around("execution(* cgl.xyhs.ssm.controller..*.*(..))&& (@target(cgl.xyhs.web.aop.UserIsLoginClass) ||"+
+			"@annotation(cgl.xyhs.web.aop.UserIsLoginMethod))")
 	public Object UserLoginAdvice(ProceedingJoinPoint joinPoint) {
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 				.getRequest();
-		System.out.println("切面方法执行");
-		if (request.getSession().getAttribute(SESSION_USER_ACCOUNT) != null) {
+		String aa = (String) request.getSession().getAttribute(SESSION_USER_ACCOUNT);
+		if (aa != null) {
 			try {
-				joinPoint.proceed();
+				return joinPoint.proceed();
 			} catch (Throwable e) {
 				e.printStackTrace();
 			}

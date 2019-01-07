@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cgl.xyhs.ssm.pojo.User;
 import cgl.xyhs.ssm.service.UserService;
+import cgl.xyhs.web.aop.UserIsLoginMethod;
 import net.sf.json.JSONObject;
 
 /**
@@ -110,6 +111,7 @@ public class UserController implements FinalConstant {
 		}
 	}
 	
+	@UserIsLoginMethod
 	@RequestMapping(value="userInfo")
     public String userInfo(Model model,HttpSession session) {
 		String account = (String) session.getAttribute(SESSION_USER_ACCOUNT);
@@ -120,6 +122,7 @@ public class UserController implements FinalConstant {
 		return "/backer/self_info.jsp";
 	}
 	
+	@UserIsLoginMethod
 	@RequestMapping(value="updatePassWord")
 	public String updateUserByTel(Model model,HttpServletRequest request) {
 		request.getParameter(REQUEST_ERROR_INFO);
@@ -148,6 +151,7 @@ public class UserController implements FinalConstant {
 		return "修改成功";
 	}
 	
+	@UserIsLoginMethod
 	@RequestMapping(value="logOut")
 	public String loguout(Model model,HttpSession session) {
 	    session.removeAttribute(SESSION_USER_ACCOUNT);

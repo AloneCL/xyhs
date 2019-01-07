@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import cgl.xyhs.ssm.pojo.Goods;
 import cgl.xyhs.ssm.service.GoodsService;
+import cgl.xyhs.web.aop.UserIsLoginMethod;
 
 /**
 * @ClassName: GoodsController.java
@@ -27,9 +28,13 @@ public class GoodsController implements FinalConstant{
 	@Autowired
 	private GoodsService service;
 	
+	/**
+	 * 商城主页检索出商品信息
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="mainGoods")
 	public String goodsList(Model model) {
-		System.out.println(11111);
 		List<Goods> elList = service.getByTypePage(1, 0, 5);
 		List<Goods> bookList = service.getByTypePage(2,0,5);
 		List<Goods> deskList = service.getByTypePage(3, 0, 5);
@@ -43,6 +48,41 @@ public class GoodsController implements FinalConstant{
 		return "/backer/main.jsp";
 	}
 	
+	/**
+	 * 查看商品信息
+	 * @param model
+	 * @param goodsdId
+	 * @return
+	 */
+	@UserIsLoginMethod
+	@RequestMapping(value="goodsData")
+	public String goodsData(Model model,Integer goodsdId) {
+        Goods goods = service.getInfoById(goodsdId);
+        model.addAttribute("goods", goods);
+		
+        return "/backer/goods_data.jsp";
+	}
+	
+	/**
+	 * 用户添加新商品
+	 * @param model
+	 * @param goods
+	 * @return
+	 */
+	@UserIsLoginMethod
+	@RequestMapping(value="addGoods")
+	public String userAddGoods(Model model,Goods goods) {
+		service.addGoods(goods);
+		return goodsList(model);
+	}
+	
+	/**
+	 * 根据商品类型分页选择商品
+	 * @param type
+	 * @param model
+	 * @param page
+	 * @return
+	 */
 	@RequestMapping(value="/searchGoods")
 	public String searchGoodsByType(Integer type,Model model,Integer page) {
 		boolean hasNext = false;
@@ -79,6 +119,14 @@ public class GoodsController implements FinalConstant{
 		return "/backer/userGoods.jsp";
 	}
 	
+	/**
+	 * 查看用户的商品信息
+	 * @param model
+	 * @param page
+	 * @param id
+	 * @return
+	 */
+	@UserIsLoginMethod
 	@RequestMapping("/searchUserGoods")
 	public String searchByUser(Model model,Integer page,Integer id) {
 		
