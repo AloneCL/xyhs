@@ -38,4 +38,14 @@ public class GoodsTest {
 			System.out.println(goods);
 		}
 	}
+	
+	@Test
+	public void userpageTest() {
+		List<Goods> goodsList = Collections.emptyList();
+		System.out.println(service.searchUserGoodsCount(4));
+		goodsList = service.getByUser(4, 0, 5);
+	    for (Goods goods : goodsList) {
+			System.out.println(goods);
+		}
+	}
 }

@@ -42,6 +42,11 @@ public interface FinalConstant {
 	String CILENT_USERNAME = "userName";
 	
 	/**
+	 * 存储在客户端中的用户id
+	 */
+	String CILENT_USER_ID = "userId";
+	
+	/**
 	 * 注册时发送的短信验证码内容
 	 */
 	String SESSION_VARIFY_CODE = "verifyCode";
@@ -86,5 +91,9 @@ public interface FinalConstant {
 	 */
 	String LOGIN_USER = "user_message";
 	
-
+	/**
+	 * 分页查询每页查询的信息条数
+	 */
+	int PAGE_DATA_NUM = 5;
+	
 }

@@ -6,6 +6,7 @@ a{border:none;text-decoration: none;color:#000;}
 .center{margin: 0 auto;}
 .w{width: 1226px;margin: 0 auto;}
 .fl{float: left;}
+.myfl{float: left;height: 40px;}
 .fr{float: right;}
 .clear{clear:both;}
 .mt20{margin-top: 20px;}
@@ -219,8 +220,8 @@ header .top .right .gouwuche:hover{color:#000;background: #666;}
 .danpin .main .mingxing:nth-of-type(4){border-top: 1px solid red;margin-right:14px;}
 .danpin .main .mingxing:nth-of-type(5){border-top: 1px solid teal;}
 .danpin .main .mingxing .sub_mingxing{padding: 37px;}
-.danpin .main .mingxing .sub_mingxing a img{display:block;width: 160px;height: 160px;opacity: 0.85}
-.danpin .main .mingxing .sub_mingxing a img:hover{width: 160px;height: 160px;opacity: 1;}
+.danpin .main .mingxing .sub_mingxing a img{display:block;width: 140px;height: 160px;opacity: 0.85}
+.danpin .main .mingxing .sub_mingxing a img:hover{width: 140px;height: 160px;opacity: 1;}
 .danpin .main .mingxing .pinpai{width: 234px;height: 14px;line-height: 14px;text-align: center;margin-top: -10px;}
 .danpin .main .mingxing .pinpai a{font-size: 14px;color:#333;}
 .danpin .main .mingxing .youhui{width: 234px;height: 12px;line-height: 12px;margin:15px 0;font-size: 12px;color: rgb(176,176,176);text-align: center;}
@@ -327,7 +328,7 @@ header .top .right .gouwuche:hover{color:#000;background: #666;}
 .grzxbj .selfinfo .lfnav .subddzx ul li{display: block;width: 194px;height: 40px;line-height: 40px;padding-left: 40px;}
 .grzxbj .selfinfo .lfnav .subddzx ul li a{color:rgb(117,117,117);}
 .grzxbj .selfinfo .lfnav .subddzx ul li a:hover{color:rgb(51,51,51);}
-.grzxbj .selfinfo .rtcont{width: 978px;height: 500px;background: #fff;}
+.grzxbj .selfinfo .rtcont{width: 978px;height: 550px;background: #fff;}
 .grzxbj .selfinfo .rtcont .ddzxbt{width: 938px;height: 60px;line-height: 60px;font-size: 22px;font-weight:bold;color:rgb(117,117,117);padding-left: 40px;border-bottom: 1px solid #ccc;}
 .grzxbj .selfinfo .rtcont .grzlbt{width:938px;height: 60px;line-height: 60px;font-size: 20px;color:rgb(117,117,117);}
 .grzxbj .selfinfo .rtcont .subgrzl{height: 45px;line-height: 45px;width: 900px;background: rgb(253,253,253);border:1px solid #aaa;margin-top: 10px;margin-bottom: 10px;border-radius: 3px;}
@@ -343,9 +344,18 @@ header .top .right .gouwuche:hover{color:#000;background: #666;}
 /*订单中心*/
 .grzxbj .selfinfo .rtcont .ddxq{width: 938px;height: 120px;line-height: 120px;font-size: 17px;color:rgb(117,117,117); 
 	border-bottom: 1px solid #ccc;padding-left: 40px;}
+.grzxbj .selfinfo .rtcont .myddxq{width: 938px;height: 90px;line-height: 110px;color:rgb(117,117,117);font-size: 15px; 
+	border-bottom: 1px solid #ccc;padding-left: 40px;}
 .grzxbj .selfinfo .rtcont .ddxq .ddspt{width: 80px;height: 80px;margin: 19px 25px 0 0;border:1px solid #aaa;}
+.grzxbj .selfinfo .rtcont .myddxq .myddspt{width: 80px;height: 80px;margin: auto;border:1px solid #aaa;}
 .grzxbj .selfinfo .rtcont .ddxq .ztxx ul li{display: inline-block;width: 130px;height: 60px;line-height:60px;float: left;border-left:1px solid #aaa; margin-top: 30px;text-align: center;}
 .grzxbj .selfinfo .rtcont .ddxq .ztxx ul li a{color:rgb(117,117,117);}
 .grzxbj .selfinfo .rtcont .ddxq .ztxx ul li a:hover{color:#ff6700;}
+
+.grzxbj .selfinfo .rtcont .myddxq .ztxx ul li{display: inline-block;width: 130px;height: 60px;line-height:60px;float: left;border-left:1px solid #aaa; margin-top: 30px;text-align: center;font-size: 15px; }
+.grzxbj .selfinfo .rtcont .myddxq .ztxx ul li a{color:rgb(117,117,117);}
+.grzxbj .selfinfo .rtcont .myddxq .ztxx ul li a:hover{color:#ff6700;}
+
+
 /*footer*/
 footer{width: 100%;height: 120px;line-height: 30px;text-align: center;font-size: 12px;background: rgb(250,250,250);padding:30px 0;}

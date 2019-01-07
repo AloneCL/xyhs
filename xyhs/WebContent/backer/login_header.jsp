@@ -5,7 +5,7 @@
 	<div class="top center">
 		<div class="left fl">
 			<ul>
-				<li><a href="http://www.mi.com/" target="_blank">小米商城</a></li>
+				<li><a href="${pageContext.request.contextPath }/mainGoods.action" target="_blank">商城首页</a></li>
 				<li>|</li>
 				<li><a href="">MIUI</a></li>
 				<li>|</li>
@@ -56,24 +56,24 @@
 					data-login="true">消息通知 <i class="J_miMessageTotal"></i>
 				</a>
 				</span> <a rel="nofollow" class="link link-order"
-					href="https://static.mi.com/order/" target="_blank">我的订单</a>
+					href="${pageContext.request.contextPath}/searchUserGoods.action?id=${cookie.userId.value }" target="_blank">我的订单</a>
 			</div>
 			<div class="clear"></div>
 		</div>
 	</div>
 </header>
 <div class="banner_x center">
-	<a href="./index.html" target="_blank"><div class="logo fl"></div></a>
+	<a href="${pageContext.request.contextPath }/mainGoods.action" target="_blank"><div class="logo fl"></div></a>
 	<a href=""><div class="ad_top fl"></div></a>
 	<div class="nav fl">
 		<ul>
-			<li><a href="">小米手机</a></li>
-			<li><a href="">红米</a></li>
-			<li><a href="">平板·笔记本</a></li>
-			<li><a href="">电视</a></li>
-			<li><a href="">盒子·影音</a></li>
-			<li><a href="">路由器</a></li>
-			<li><a href="">智能硬件</a></li>
+			<li><a href="">小电器</a></li>
+			<li><a href="">书籍</a></li>
+			<li><a href="">小书桌</a></li>
+			<li><a href="">实用小工具</a></li>
+			<li><a href="">服装</a></li>
+			<li><a href="">复习资料/笔记</a></li>
+			<li><a href="">洗漱品</a></li>
 			<li><a href="">服务</a></li>
 			<li><a href="">社区</a></li>
 		</ul>

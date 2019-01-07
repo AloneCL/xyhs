@@ -21,7 +21,7 @@
 				<div class="ddzx">订单中心</div>
 				<div class="subddzx">
 					<ul>
-						<li><a href="./dingdanzhongxin.html">我的订单</a></li>
+						<li><a href="${pageContext.request.contextPath}/searchUserOrder.action?id=${user_message.userId}">我的订单</a></li>
 						<li><a href="">意外保</a></li>
 						<li><a href="">团购订单</a></li>
 						<li><a href="">评价晒单</a></li>
@@ -32,7 +32,7 @@
 					<ul>
 						<li><a href="${pageContext.request.contextPath}/userInfo.action"
 							style="color: #ff6700; font-weight: bold;">我的个人中心</a></li>
-						<li><a href="">消息通知</a></li>
+						<li><a href="${pageContext.request.contextPath}/searchUserGoods.action?id=${user_message.userId}">我的商品</a></li>
 						<li><a href="${pageContext.request.contextPath}/updatePassWord.action">修改密码</a></li>
 						<li><a href="">收货地址</a></li>
 					</ul>

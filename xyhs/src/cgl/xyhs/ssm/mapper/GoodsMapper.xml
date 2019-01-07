@@ -59,7 +59,7 @@
 		select
 		<include refid="Base_Column_List" />
 		from goods_inf
-		where goods_id = #{id,jdbcType=INTEGER} order by
+		where user_id = #{id,jdbcType=INTEGER} order by
 		goods_id limit
 		#{start,jdbcType=INTEGER},#{end,jdbcType=INTEGER}
 	</select>
