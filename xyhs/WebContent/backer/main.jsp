@@ -76,6 +76,26 @@
 				</div>
 			</c:forEach>
 		</div>
+		
+		<div class="biaoti center">实用小工具</div>
+		<div class="main center mb20">
+			<c:forEach items="${toolList}" var="tool">
+				<div class="mingxing fl mb20"
+					style="border: 2px solid #fff; width: 230px; cursor: pointer;"
+					onmouseout="this.style.border='2px solid #fff'"
+					onmousemove="this.style.border='2px solid red'">
+					<div class="sub_mingxing">
+						<a href="${pageContext.request.contextPath}/goodsData.action?goodsdId=${tool.goodsId}" target="_blank"><img
+							style="height: 100; width: 100;" src="${desk.goodsImg }" alt=""></a>
+					</div>
+					<div class="pinpai">
+						<a href="${pageContext.request.contextPath}/goodsData.action?goodsdId=${tool.goodsId}" target="_blank">${desk.goodsName }</a>
+					</div>
+					<div class="youhui">${tool.introduce }</div>
+					<div class="jiage">${tool.price}/元</div>
+				</div>
+			</c:forEach>
+		</div>
 	</div>
 
 

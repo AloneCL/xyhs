@@ -3,15 +3,27 @@
  */
 package cgl.xyhs.ssm.controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import cgl.xyhs.ssm.pojo.Goods;
 import cgl.xyhs.ssm.service.GoodsService;
+import cgl.xyhs.util.tools.DateConverter;
 import cgl.xyhs.web.aop.UserIsLoginMethod;
 
 /**
@@ -33,7 +45,7 @@ public class GoodsController implements FinalConstant{
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="mainGoods")
+	@RequestMapping(value="/mainGoods")
 	public String goodsList(Model model) {
 		List<Goods> elList = service.getByTypePage(1, 0, 5);
 		List<Goods> bookList = service.getByTypePage(2,0,5);
@@ -55,12 +67,22 @@ public class GoodsController implements FinalConstant{
 	 * @return
 	 */
 	@UserIsLoginMethod
-	@RequestMapping(value="goodsData")
+	@RequestMapping(value="/goodsData")
 	public String goodsData(Model model,Integer goodsdId) {
         Goods goods = service.getInfoById(goodsdId);
         model.addAttribute("goods", goods);
 		
         return "/backer/goods_data.jsp";
+	}
+	
+	@RequestMapping(value="/userShowGoods")
+	public String userShowGoods(Model model,Integer goodsId) {
+		if(goodsId!=null) {
+		Goods goods = service.getInfoById(goodsId);
+		model.addAttribute("goods", goods);
+		return "/backer/userGoods_data.jsp";
+		}
+		return goodsList(model);
 	}
 	
 	/**
@@ -70,10 +92,28 @@ public class GoodsController implements FinalConstant{
 	 * @return
 	 */
 	@UserIsLoginMethod
-	@RequestMapping(value="addGoods")
+	@RequestMapping(value="/addGoods")
+	@ResponseBody
 	public String userAddGoods(Model model,Goods goods) {
-		service.addGoods(goods);
-		return goodsList(model);
+		if(service.addGoods(goods)>0)
+			return "success";
+        return "fail";
+	}
+    
+	/**
+	 * 用户修改自己的商品信息
+	 * @param model
+	 * @param goods
+	 * @return
+	 */
+	@UserIsLoginMethod
+	@RequestMapping(value="/modifyGoods")
+	@ResponseBody
+	public String modifyGoods(Model model,Goods goods) {
+		if(service.updateGoods(goods)>0) {
+			return "success";
+		}
+        return "fail";
 	}
 	
 	/**
@@ -167,5 +207,35 @@ public class GoodsController implements FinalConstant{
         model.addAttribute("totalPage", totalPage);
         
 		return "/backer/userGoods.jsp";
+	}
+	
+	@RequestMapping("/uploadImg")
+	@ResponseBody
+	public String uploadImg(@RequestParam MultipartFile picture,HttpServletRequest request) {
+		Random rand = new Random();
+		String path1 = System.getProperty("evan.webappxysh");
+		String path2 = "../xyhsUpload/img/"+DateConverter.convert(new Date());
+		String path = path1+path2;
+		
+		File file = new File(path);
+		if(!file.exists()){
+		file.mkdirs();
+		}
+		String img = System.currentTimeMillis()+(int)Math.random()*1000000+".jpg";
+		
+		FileOutputStream output = null;
+		try {
+			output = new FileOutputStream(new File(file,img));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		try {
+			output.write(picture.getBytes());
+			output.close();
+		} catch (IOException e) {
+            System.out.println("文件上传错误"); 
+			e.printStackTrace();
+		}
+		return path2+"/"+img;
 	}
 }

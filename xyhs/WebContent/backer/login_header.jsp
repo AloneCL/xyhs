@@ -5,7 +5,9 @@
 	<div class="top center">
 		<div class="left fl">
 			<ul>
-				<li><a href="${pageContext.request.contextPath }/mainGoods.action" target="_blank">商城首页</a></li>
+				<li><a
+					href="${pageContext.request.contextPath }/mainGoods.action"
+					target="_blank">商城首页</a></li>
 				<li>|</li>
 				<li><a href="">MIUI</a></li>
 				<li>|</li>
@@ -34,37 +36,38 @@
 			<div class="fr">
 
 				<span id="userspan" class="user"> <a rel="nofollow"
-					class="user-name" href="https://my.mi.com/portal" target="_blank">
-						<span class="name">${cookie.userName.value }</span> <i
-						class="iconfont"></i>
+					class="user-name"
+					href="${pageContext.request.contextPath}/userInfo.action"> <span
+						class="name">${cookie.userName.value }</span> <i class="iconfont"></i>
 				</a>
 					<ul class="user-menu">
-						<li><a rel="nofollow" href="${pageContext.request.contextPath}/userInfo.action"
-							target="_blank">个人中心</a></li>
 						<li><a rel="nofollow"
-							href="backer/addGoods.jsp" target="_blank">上传商品</a>
-						</li>
+							href="${pageContext.request.contextPath}/userInfo.action">个人中心</a></li>
+						<li><a rel="nofollow" href="javascript:;" onclick="addGoods()"
+							target="_blank">上传商品</a></li>
 						<li><a rel="nofollow"
-							href="https://order.mi.com/user/favorite" target="_blank">我的喜欢</a>
+							href="${pageContext.request.contextPath}/searchUserGoods.action?id=${cookie.userId.value }">我的商品</a>
 						</li>
 						<li><a rel="nofollow" href="https://account.xiaomi.com/"
 							target="_blank">小米账户</a></li>
-						<li><a rel="nofollow" href="${pageContext.request.contextPath}/logOut.action">退出登录</a></li>
+						<li><a rel="nofollow"
+							href="${pageContext.request.contextPath}/logOut.action">退出登录</a></li>
 					</ul>
 				</span> <span class="message"> <a rel="nofollow"
 					data-href="//order.mi.com/message/list" class="link link-order"
 					data-login="true">消息通知 <i class="J_miMessageTotal"></i>
 				</a>
 				</span> <a rel="nofollow" class="link link-order"
-					href="${pageContext.request.contextPath}/searchUserGoods.action?id=${cookie.userId.value }" target="_blank">我的订单</a>
+					href="${pageContext.request.contextPath}/searchUserGoods.action?id=${cookie.userId.value }">我的订单</a>
 			</div>
 			<div class="clear"></div>
 		</div>
 	</div>
 </header>
 <div class="banner_x center">
-	<a href="${pageContext.request.contextPath }/mainGoods.action" target="_blank"><div class="logo fl"></div></a>
-	<a href=""><div class="ad_top fl"></div></a>
+	<a href="${pageContext.request.contextPath }/mainGoods.action"
+		target="_blank"><div class="logo fl"></div></a> <a href=""><div
+			class="ad_top fl"></div></a>
 	<div class="nav fl">
 		<ul>
 			<li><a href="">小电器</a></li>
@@ -79,15 +82,31 @@
 		</ul>
 	</div>
 	<div class="search fr">
-				<form action="" method="post">
-					<div class="text fl">
-						<input type="text" class="shuru"  placeholder="小米6&nbsp;小米MIX现货">
-					</div>
-					<div class="submit fl">
-						<input type="submit" class="sousuo" value="搜索"/>
-					</div>
-					<div class="clear"></div>
-				</form>
-				<div class="clear"></div>
+		<form action="" method="post">
+			<div class="text fl">
+				<input type="text" class="shuru" placeholder="小米6&nbsp;小米MIX现货">
 			</div>
+			<div class="submit fl">
+				<input type="submit" class="sousuo" value="搜索" />
+			</div>
+			<div class="clear"></div>
+		</form>
+		<div class="clear"></div>
+	</div>
 </div>
+
+<script type="text/javascript" src="lib/layer/3.1.1/layer.js"></script>
+<script type="text/javascript">
+	function addGoods() {
+		alert(111);
+		layer.open({
+					type : 2,
+					title : '上传商品',
+					shadeClose : true,
+					shade : false,
+					maxmin : true, //开启最大化最小化按钮
+					area : [ '893px', '600px' ],
+					content : 'backer/addGoods.jsp'
+		});
+	}
+</script>

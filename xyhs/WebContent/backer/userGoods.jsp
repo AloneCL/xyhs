@@ -35,6 +35,7 @@
 					</ul>
 				</div>
 			</div>
+			
 			<div class="rtcont fr">
 
 				<div class="ddzxbt">商品列表</div>
@@ -51,7 +52,7 @@
 									<li>${goods.price }</li>
 									<li><fmt:formatDate value="${goods.upTime }"
 											pattern="yyyy-MM-dd　HH：mm" /></li>
-									<li><a href="">商品详情></a></li>
+									<li><a href="${pageContext.request.contextPath}/userShowGoods.action?goodsId=${goods.goodsId}">商品详情></a></li>
 									<div class="clear"></div>
 								</ul>
 							</div>

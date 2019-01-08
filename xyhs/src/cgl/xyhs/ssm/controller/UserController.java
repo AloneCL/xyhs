@@ -62,7 +62,7 @@ public class UserController implements FinalConstant {
 				session.setAttribute(SESSION_USER_ACCOUNT, vo.getUserAccount());
 				response.addCookie(new Cookie(CILENT_USERNAME, service.getInfoByAccount(vo.getUserAccount()).getUserName()));
 				response.addCookie(new Cookie(CILENT_USER_ID, (service.getInfoByAccount(vo.getUserAccount()).getUserId()).toString()));
-				return "/backer/main.jsp";
+				return "mainGoods.action";
 			} else if (result == 0) {
 				return "redirect:login.action?error=" + LOGIN_ERROR_PASS;
 			} else {
