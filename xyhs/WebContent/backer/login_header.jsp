@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
 <header>
 	<div class="top center">
 		<div class="left fl">
@@ -31,7 +32,7 @@
 
 		<div class="right fr topbar-info">
 			<div class="gouwuche fr">
-				<a href="">购物车</a>
+				<a href="${pageContext.request.contextPath }/showShoppingCar.action?userId=${cookie.userId.value }">购物车</a>
 			</div>
 			<div class="fr">
 
@@ -98,7 +99,6 @@
 <script type="text/javascript" src="lib/layer/3.1.1/layer.js"></script>
 <script type="text/javascript">
 	function addGoods() {
-		alert(111);
 		layer.open({
 					type : 2,
 					title : '上传商品',

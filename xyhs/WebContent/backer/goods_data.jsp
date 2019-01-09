@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
 <title>商品详情</title>
 </head>
 <c:choose>
@@ -71,13 +72,14 @@
 					<div class="top1 mt10">
 						<div class="left1 fl"></div>
 						<div class="right1 fr">${goods.price }元</div>
-						<div class="clear">${goods.goodsName }/${goods.introduce }</div>
+						<div style="font-size: 15px; color: #000;">${goods.goodsName }/${goods.introduce }</div>
+						<div style="font-size: 15px; color: #000; margin-top: 20px;">库存：x 23 件</div>
 					</div>
-					<div class="bot mt20 ft20 ftbc">总计：${goods.price }元</div>
+					<div class="bot mt20 ft20 ftbc" style="margin-top: 40px;">总计：${goods.price }元</div>
 				</div>
-				<div class="xiadan ml20 mt20">
-					<input class="jrgwc" type="button" name="jrgwc" value="立即选购" /> <input
-						class="jrgwc" type="button" name="jrgwc" value="加入购物车" />
+				<div class="xiadan ml20 mt20" style="margin-top: 50px;">
+					<input class="jrgwc" type="button" name="jrgwc" value="立即选购" onclick=""/> <input
+						class="jrgwc" type="button" name="jrgwc" value="加入购物车" onclick="addShoppingCar()"/>
 
 				</div>
 			</div>
@@ -85,5 +87,30 @@
 		</div>
 	</form>
 	<jsp:include page="/backer/footer.jsp" />
+	<script type="text/javascript" src="lib/layer/3.1.1/layer.js"></script>
+	<script type="text/javascript">
+	function addShoppingCar(){
+		let userId = ${cookie.userId.value};
+		let goodsId = ${goods.goodsId};
+		$.ajax({
+			url:"${pageContext.request.contextPath}/addGoodsForCar.action",
+			data:{
+				userId: userId,
+				goodsId : goodsId
+			},
+			success:function(data){
+				if(data == "success"){
+					  layer.msg('成功添加',{icon:1,time:1000});
+				}else if(data == "fail"){
+					  layer.msg('出错了',{icon:5});
+				}
+					
+			},
+			error:function(){
+				layer.msg('程序出错了',{icon:2});
+			}
+		})
+	}
+	</script>
 </body>
 </html>

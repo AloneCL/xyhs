@@ -6,6 +6,24 @@
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
   </resultMap>
+  
+  <resultMap id="BaseResultMapGoods" type="cgl.xyhs.ssm.pojo.Goods">
+		<id column="goods_id" jdbcType="INTEGER" property="goodsId" />
+		<result column="goods_name" jdbcType="VARCHAR"
+			property="goodsName" />
+		<result column="goods_type" jdbcType="INTEGER"
+			property="goodsType" />
+		<result column="goods_status" jdbcType="INTEGER"
+			property="goodsStatus" />
+		<result column="up_time" jdbcType="TIMESTAMP" property="upTime" />
+		<result column="price" jdbcType="DOUBLE" property="price" />
+		<result column="goods_img" jdbcType="VARCHAR"
+			property="goodsImg" />
+		<result column="introduce" jdbcType="VARCHAR"
+			property="introduce" />
+		<result column="user_id" jdbcType="INTEGER" property="userId" />
+	</resultMap>
+  
   <sql id="Base_Column_List">
     sc_id, user_id, goods_id
   </sql>
@@ -15,22 +33,33 @@
     from shopping_inf
     where sc_id = #{scId,jdbcType=INTEGER}
   </select>
+  
+  <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMapGoods">
+    select * from goods_inf where goods_id in
+    (select goods_id 
+    from shopping_inf
+    where user_id = #{goodsId,jdbcType=INTEGER})
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from shopping_inf
     where sc_id = #{scId,jdbcType=INTEGER}
   </delete>
+  
+  <delete id="deleteByGoodsId" parameterType="java.lang.Integer">
+    delete from shopping_inf 
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </delete>
+  
   <insert id="insert" parameterType="cgl.xyhs.ssm.pojo.ShoppingCar">
-    insert into shopping_inf (sc_id, user_id, goods_id
+    insert into shopping_inf (user_id, goods_id
       )
-    values (#{scId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}
+    values (#{userId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="cgl.xyhs.ssm.pojo.ShoppingCar">
     insert into shopping_inf
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="scId != null">
-        sc_id,
-      </if>
       <if test="userId != null">
         user_id,
       </if>
@@ -39,9 +68,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="scId != null">
-        #{scId,jdbcType=INTEGER},
-      </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
