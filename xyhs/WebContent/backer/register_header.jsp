@@ -52,19 +52,19 @@
 	<div class="nav fl">
 		<ul>
 			<li><a
-				href="${pageContext.request.contextPath }/mainGoods.action">小电器</a></li>
+				href="${pageContext.request.contextPath }/typeGoods.action?type=1">小电器</a></li>
 			<li><a
-				href="${pageContext.request.contextPath }/mainGoods.action">书籍</a></li>
+				href="${pageContext.request.contextPath }/typeGoods.action?type=2">书籍</a></li>
 			<li><a
-				href="${pageContext.request.contextPath }/mainGoods.action">小书桌</a></li>
+				href="${pageContext.request.contextPath }/typeGoods.action?type=3">小书桌</a></li>
 			<li><a
-				href="${pageContext.request.contextPath }/mainGoods.action">实用小工具</a></li>
+				href="${pageContext.request.contextPath }/typeGoods.action?type=4">实用小工具</a></li>
 			<li><a
-				href="${pageContext.request.contextPath }/mainGoods.action">服装</a></li>
+				href="${pageContext.request.contextPath }/typeGoods.action?type=5">服装</a></li>
 			<li><a
-				href="${pageContext.request.contextPath }/mainGoods.action">复习资料/笔记</a></li>
+				href="${pageContext.request.contextPath }/typeGoods.action?type=6">复习资料/笔记</a></li>
 			<li><a
-				href="${pageContext.request.contextPath }/mainGoods.action">洗漱品</a></li>
+				href="${pageContext.request.contextPath }/typeGoods.action?type=7">洗漱品</a></li>
 			<li><a
 				href="${pageContext.request.contextPath }/mainGoods.action">服务</a></li>
 			<li><a

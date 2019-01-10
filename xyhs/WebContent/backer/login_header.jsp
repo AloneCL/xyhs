@@ -7,8 +7,7 @@
 		<div class="left fl">
 			<ul>
 				<li><a
-					href="${pageContext.request.contextPath }/mainGoods.action"
-					 >商城首页</a></li>
+					href="${pageContext.request.contextPath }/mainGoods.action">商城首页</a></li>
 				<li>|</li>
 				<li><a href="">MIUI</a></li>
 				<li>|</li>
@@ -32,7 +31,8 @@
 
 		<div class="right fr topbar-info">
 			<div class="gouwuche fr">
-				<a href="${pageContext.request.contextPath }/showShoppingCar.action?userId=${cookie.userId.value }">购物车</a>
+				<a
+					href="${pageContext.request.contextPath }/showShoppingCar.action?userId=${cookie.userId.value }">购物车</a>
 			</div>
 			<div class="fr">
 
@@ -44,19 +44,19 @@
 					<ul class="user-menu">
 						<li><a rel="nofollow"
 							href="${pageContext.request.contextPath}/userInfo.action">个人中心</a></li>
-						<li><a rel="nofollow" href="javascript:;" onclick="addGoods()"
-							 >上传商品</a></li>
+						<li><a rel="nofollow" href="javascript:;"
+							onclick="addGoods()">上传商品</a></li>
 						<li><a rel="nofollow"
 							href="${pageContext.request.contextPath}/searchUserGoods.action?id=${cookie.userId.value }">我的商品</a>
 						</li>
-						<li><a rel="nofollow" href="${pageContext.request.contextPath}/updatePassWord.action"
-							 >修改密码</a></li>
+						<li><a rel="nofollow"
+							href="${pageContext.request.contextPath}/updatePassWord.action">修改密码</a></li>
 						<li><a rel="nofollow"
 							href="${pageContext.request.contextPath}/logOut.action">退出登录</a></li>
 					</ul>
-				</span> <span class="message"> <a rel="nofollow"
-					data-href="" class="link link-order"
-					data-login="true">消息通知 <i class="J_miMessageTotal"></i>
+				</span> <span class="message"> <a rel="nofollow" data-href=""
+					class="link link-order" data-login="true">消息通知 <i
+						class="J_miMessageTotal"></i>
 				</a>
 				</span> <a rel="nofollow" class="link link-order"
 					href="${pageContext.request.contextPath}/searchUserGoods.action?id=${cookie.userId.value }">我的订单</a>
@@ -66,20 +66,28 @@
 	</div>
 </header>
 <div class="banner_x center">
-	<a href="${pageContext.request.contextPath }/mainGoods.action"
-		><div class="logo fl"></div></a> <a href=""><div
-			class="ad_top fl"></div></a>
+	<a href="${pageContext.request.contextPath }/mainGoods.action"><div
+			class="logo fl"></div></a> <a href=""><div class="ad_top fl"></div></a>
 	<div class="nav fl">
 		<ul>
-			<li><a href="${pageContext.request.contextPath }/mainGoods.action">小电器</a></li>
-			<li><a href="${pageContext.request.contextPath }/mainGoods.action">书籍</a></li>
-			<li><a href="${pageContext.request.contextPath }/mainGoods.action">小书桌</a></li>
-			<li><a href="${pageContext.request.contextPath }/mainGoods.action">实用小工具</a></li>
-			<li><a href="${pageContext.request.contextPath }/mainGoods.action">服装</a></li>
-			<li><a href="${pageContext.request.contextPath }/mainGoods.action">复习资料/笔记</a></li>
-			<li><a href="${pageContext.request.contextPath }/mainGoods.action">洗漱品</a></li>
-			<li><a href="${pageContext.request.contextPath }/mainGoods.action">服务</a></li>
-			<li><a href="${pageContext.request.contextPath }/mainGoods.action">社区</a></li>
+			<li><a
+				href="${pageContext.request.contextPath }/typeGoods.action?type=1">小电器</a></li>
+			<li><a
+				href="${pageContext.request.contextPath }/typeGoods.action?type=2">书籍</a></li>
+			<li><a
+				href="${pageContext.request.contextPath }/typeGoods.action?type=3">小书桌</a></li>
+			<li><a
+				href="${pageContext.request.contextPath }/typeGoods.action?type=4">实用小工具</a></li>
+			<li><a
+				href="${pageContext.request.contextPath }/typeGoods.action?type=5">服装</a></li>
+			<li><a
+				href="${pageContext.request.contextPath }/typeGoods.action?type=6">复习资料/笔记</a></li>
+			<li><a
+				href="${pageContext.request.contextPath }/typeGoods.action?type=7">洗漱品</a></li>
+			<li><a
+				href="${pageContext.request.contextPath }/mainGoods.action">服务</a></li>
+			<li><a
+				href="${pageContext.request.contextPath }/mainGoods.action">社区</a></li>
 		</ul>
 	</div>
 	<div class="search fr">
@@ -100,13 +108,13 @@
 <script type="text/javascript">
 	function addGoods() {
 		layer.open({
-					type : 2,
-					title : '上传商品',
-					shadeClose : true,
-					shade : false,
-					maxmin : true, //开启最大化最小化按钮
-					area : [ '893px', '600px' ],
-					content : 'backer/addGoods.jsp'
+			type : 2,
+			title : '上传商品',
+			shadeClose : true,
+			shade : false,
+			maxmin : true, //开启最大化最小化按钮
+			area : [ '893px', '600px' ],
+			content : 'backer/addGoods.jsp'
 		});
 	}
 </script>
