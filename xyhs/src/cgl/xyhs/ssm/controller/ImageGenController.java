@@ -12,22 +12,24 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import cgl.xyhs.util.tools.RandomValidateCode;
+
 /**
 * @ClassName: ImageGenController.java
 * @Description: 验证码放置及验证
 * @version: v1.0.0
 * @author: CGL
-* @date: 2018年12月26日 下午8:15:40 
+* @date: 2018年12月31日 下午8:15:40 
  */
 @Controller
 public class ImageGenController implements FinalConstant{
 
-
+/*
     @RequestMapping(value="/toImg")
     public String toImg(){
 
         return "image/image";
-    }
+    }*/
 
 
     @RequestMapping("/getLoginCode")
@@ -39,6 +41,7 @@ public class ImageGenController implements FinalConstant{
         response.setHeader("Cache-Control", "no-cache");
         response.setHeader("Set-Cookie", "name=value; HttpOnly");//设置HttpOnly属性,防止Xss攻击
         response.setDateHeader("Expire", 0);
+        
         RandomValidateCode randomValidateCode = new RandomValidateCode();
         try {
             randomValidateCode.getRandcode(request, response,SESSION_VALIDATECODE);// 输出图片方法

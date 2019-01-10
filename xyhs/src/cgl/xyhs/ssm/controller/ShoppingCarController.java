@@ -37,10 +37,10 @@ public class ShoppingCarController implements FinalConstant{
 		
 		int total = service.getGoodsCount(userId);
 		int currentPage = 1;
-		int totalPage =  total%PAGE_DATA_NUM >0 ? total/PAGE_DATA_NUM+1 : total/PAGE_DATA_NUM;
-		if(page > 1) {
+		if(currentPage < page) {
 			currentPage = page;
 		}
+		int totalPage = total%PAGE_DATA_NUM>0 ? total/PAGE_DATA_NUM+1 : total/PAGE_DATA_NUM;
 		if(currentPage > totalPage)
 			hasNext = true;
 		//起始位置

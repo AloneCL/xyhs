@@ -13,7 +13,7 @@
 	<!-- login -->
 	<div class="top center">
 		<div class="logo center">
-			<a href="index.html" target="_blank"><img
+			<a href="${pageContext.request.contextPath }/mainGoods.action"><img
 				src="image/mistore_logo.png" alt=""></a>
 		</div>
 	</div>

@@ -5,7 +5,8 @@
 	<div class="top center">
 		<div class="left fl">
 			<ul>
-				<li><a href="${pageContext.request.contextPath }/mainGoods.action">商城首页</a></li>
+				<li><a
+					href="${pageContext.request.contextPath }/mainGoods.action">商城首页</a></li>
 				<li>|</li>
 				<li><a href="">MIUI</a></li>
 				<li>|</li>
@@ -35,7 +36,7 @@
 				<ul>
 					<li><a href="login.action">登录</a></li>
 					<li>|</li>
-					<li><a href="userRegister.action"  >注册</a></li>
+					<li><a href="userRegister.action">注册</a></li>
 					<li>|</li>
 					<li><a href="">消息通知</a></li>
 				</ul>
@@ -46,25 +47,34 @@
 	</div>
 </header>
 <div class="banner_x center">
-	<a href="${pageContext.request.contextPath }/mainGoods.action"  ><div class="logo fl"></div></a>
-	<a href=""><div class="ad_top fl"></div></a>
+	<a href="${pageContext.request.contextPath }/mainGoods.action"><div
+			class="logo fl"></div></a> <a href=""><div class="ad_top fl"></div></a>
 	<div class="nav fl">
 		<ul>
-			<li><a href="">小电器</a></li>
-			<li><a href="">书籍</a></li>
-			<li><a href="">小书桌</a></li>
-			<li><a href="">实用小工具</a></li>
-			<li><a href="">服装</a></li>
-			<li><a href="">复习资料/笔记</a></li>
-			<li><a href="">洗漱品</a></li>
-			<li><a href="">服务</a></li>
-			<li><a href="">社区</a></li>
+			<li><a
+				href="${pageContext.request.contextPath }/mainGoods.action">小电器</a></li>
+			<li><a
+				href="${pageContext.request.contextPath }/mainGoods.action">书籍</a></li>
+			<li><a
+				href="${pageContext.request.contextPath }/mainGoods.action">小书桌</a></li>
+			<li><a
+				href="${pageContext.request.contextPath }/mainGoods.action">实用小工具</a></li>
+			<li><a
+				href="${pageContext.request.contextPath }/mainGoods.action">服装</a></li>
+			<li><a
+				href="${pageContext.request.contextPath }/mainGoods.action">复习资料/笔记</a></li>
+			<li><a
+				href="${pageContext.request.contextPath }/mainGoods.action">洗漱品</a></li>
+			<li><a
+				href="${pageContext.request.contextPath }/mainGoods.action">服务</a></li>
+			<li><a
+				href="${pageContext.request.contextPath }/mainGoods.action">社区</a></li>
 		</ul>
 	</div>
 	<div class="search fr">
 		<form action="" method="post">
 			<div class="text fl">
-				<input type="text" class="shuru" placeholder="小米6&nbsp;小米MIX现货">
+				<input type="text" class="shuru" placeholder="搜索商品">
 			</div>
 			<div class="submit fl">
 				<input type="submit" class="sousuo" value="搜索" />

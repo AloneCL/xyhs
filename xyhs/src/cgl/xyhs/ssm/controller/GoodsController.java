@@ -66,7 +66,6 @@ public class GoodsController implements FinalConstant{
 	 * @param goodsdId
 	 * @return
 	 */
-	@UserIsLoginMethod
 	@RequestMapping(value="/goodsData")
 	public String goodsData(Model model,Integer goodsdId) {
         Goods goods = service.getInfoById(goodsdId);
@@ -210,9 +209,9 @@ public class GoodsController implements FinalConstant{
 	}
 	
 	@RequestMapping("/uploadImg")
+	@UserIsLoginMethod
 	@ResponseBody
 	public String uploadImg(@RequestParam MultipartFile picture,HttpServletRequest request) {
-		Random rand = new Random();
 		String path1 = System.getProperty("evan.webappxysh");
 		String path2 = "../xyhsUpload/img/"+DateConverter.convert(new Date());
 		String path = path1+path2;
@@ -221,8 +220,8 @@ public class GoodsController implements FinalConstant{
 		if(!file.exists()){
 		file.mkdirs();
 		}
-		String img = System.currentTimeMillis()+(int)Math.random()*1000000+".jpg";
 		
+		String img = System.currentTimeMillis()+(int)Math.random()*1000000+".jpg";
 		FileOutputStream output = null;
 		try {
 			output = new FileOutputStream(new File(file,img));

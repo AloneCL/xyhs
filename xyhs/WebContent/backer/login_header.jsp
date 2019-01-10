@@ -85,7 +85,7 @@
 	<div class="search fr">
 		<form action="" method="post">
 			<div class="text fl">
-				<input type="text" class="shuru" placeholder="小米6&nbsp;小米MIX现货">
+				<input type="text" class="shuru" placeholder="搜索商品">
 			</div>
 			<div class="submit fl">
 				<input type="submit" class="sousuo" value="搜索" />
