@@ -35,7 +35,7 @@
 				<ul>
 					<li><a href="login.action">登录</a></li>
 					<li>|</li>
-					<li><a href="userRegister.action" target="_blank">注册</a></li>
+					<li><a href="userRegister.action"  >注册</a></li>
 					<li>|</li>
 					<li><a href="">消息通知</a></li>
 				</ul>
@@ -46,7 +46,7 @@
 	</div>
 </header>
 <div class="banner_x center">
-	<a href="${pageContext.request.contextPath }/mainGoods.action" target="_blank"><div class="logo fl"></div></a>
+	<a href="${pageContext.request.contextPath }/mainGoods.action"  ><div class="logo fl"></div></a>
 	<a href=""><div class="ad_top fl"></div></a>
 	<div class="nav fl">
 		<ul>

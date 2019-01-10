@@ -17,7 +17,7 @@
 				<div class="regist_top">
 					<div class="left fl">会员注册</div>
 					<div class="right fr">
-						<a href="/xyhs/liebiao.jsp" target="_self">小米商城</a>
+						<a href="mainGoods.action" target="_self">哇呜校园</a>
 					</div>
 					<div class="clear"></div>
 					<div class="xian center"></div>

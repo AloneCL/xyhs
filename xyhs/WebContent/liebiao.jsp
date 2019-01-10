@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+    <jsp:forward page="mainGoods.action" />
 	<c:choose>
 		<c:when test="${sessionScope.loginUser !=null}">
 			<jsp:include page="/backer/login_header.jsp"></jsp:include>
