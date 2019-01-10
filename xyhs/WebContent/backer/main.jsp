@@ -86,10 +86,10 @@
 					onmousemove="this.style.border='2px solid red'">
 					<div class="sub_mingxing">
 						<a href="${pageContext.request.contextPath}/goodsData.action?goodsdId=${tool.goodsId}" target="_blank"><img
-							style="height: 100; width: 100;" src="${desk.goodsImg }" alt=""></a>
+							style="height: 100; width: 100;" src="${tool.goodsImg }" alt=""></a>
 					</div>
 					<div class="pinpai">
-						<a href="${pageContext.request.contextPath}/goodsData.action?goodsdId=${tool.goodsId}" target="_blank">${desk.goodsName }</a>
+						<a href="${pageContext.request.contextPath}/goodsData.action?goodsdId=${tool.goodsId}" target="_blank">${tool.goodsName }</a>
 					</div>
 					<div class="youhui">${tool.introduce }</div>
 					<div class="jiage">${tool.price}/元</div>

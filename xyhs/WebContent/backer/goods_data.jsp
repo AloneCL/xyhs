@@ -73,7 +73,7 @@
 						<div class="left1 fl"></div>
 						<div class="right1 fr">${goods.price }元</div>
 						<div style="font-size: 15px; color: #000;">${goods.goodsName }/${goods.introduce }</div>
-						<div style="font-size: 15px; color: #000; margin-top: 20px;">库存：x 23 件</div>
+						<div style="font-size: 15px; color: #000; margin-top: 20px;">库存：${goods.goodsNum } 件</div>
 					</div>
 					<div class="bot mt20 ft20 ftbc" style="margin-top: 40px;">总计：${goods.price }元</div>
 				</div>

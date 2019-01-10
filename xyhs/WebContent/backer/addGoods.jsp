@@ -29,6 +29,9 @@
 						id="price" style="font-size: 17px; height: 20px" />
 				</div>
 				<div class="subgrzl ml40" style="margin-top: 20px;">
+					<span id="title">商品数量：</span><input name="goodsNum" style="font-size: 17px; width:40px; height: 20px" type="number" value="1" step="1" min="1">
+				</div>
+				<div class="subgrzl ml40" style="margin-top: 20px;">
 					<span id="title">商品描述：</span><input type="text" name="introduce"
 						id="introduce" style="font-size: 17px; height: 20px" />
 				</div>

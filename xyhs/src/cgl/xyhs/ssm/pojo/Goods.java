@@ -26,7 +26,9 @@ public final class Goods implements Serializable{
     private Integer goodsStatus;
 
     private Date upTime;
-
+    
+    private Integer goodsNum;
+    
     private Double price;
 
     private String goodsImg;
@@ -115,6 +117,20 @@ public final class Goods implements Serializable{
 		return "Goods [goodsId=" + goodsId + ", goodsName=" + goodsName + ", goodsType=" + goodsType + ", goodsStatus="
 				+ goodsStatus + ", upTime=" + upTime + ", price=" + price + ", goodsImg=" + goodsImg + ", introduce="
 				+ introduce + ", userId=" + userId + "]";
+	}
+
+	/**
+	 * @return the goodsNum
+	 */
+	public Integer getGoodsNum() {
+		return goodsNum;
+	}
+
+	/**
+	 * @param goodsNum the goodsNum to set
+	 */
+	public void setGoodsNum(Integer goodsNum) {
+		this.goodsNum = goodsNum;
 	}
     
     

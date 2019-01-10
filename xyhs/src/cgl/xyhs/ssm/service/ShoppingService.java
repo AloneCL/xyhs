@@ -17,11 +17,15 @@ import cgl.xyhs.ssm.pojo.ShoppingCar;
  */
 public interface ShoppingService {
      
-	List<Goods> selectByUserId(Integer userId);
+	List<ShoppingCar> selectByUserId(Integer userId,Integer start,Integer end);
 	
 	int addShopping(ShoppingCar sc);
 	
 	int deleteByGoodsId(Integer goodsId);
 	
 	int updateShopping(ShoppingCar car);
+	
+	int getGoodsCount(Integer id);
+	
+	ShoppingCar getInfo(Integer id);
 }

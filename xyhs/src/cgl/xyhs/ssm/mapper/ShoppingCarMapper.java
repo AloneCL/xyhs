@@ -2,6 +2,7 @@ package cgl.xyhs.ssm.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import cgl.xyhs.ssm.pojo.Goods;
@@ -16,6 +17,8 @@ public interface ShoppingCarMapper {
     int insertSelective(ShoppingCar record);
 
     ShoppingCar selectByPrimaryKey(Integer scId);
+    
+    ShoppingCar selectByGoodsId(Integer goodsId);
 
     int updateByPrimaryKeySelective(ShoppingCar record);
 
@@ -33,6 +36,12 @@ public interface ShoppingCarMapper {
      * @param userId
      * @return
      */
-    List<Goods> selectByUserId(Integer userId);
+    List<ShoppingCar> selectByUserId(@Param("userId")Integer userId,@Param("start")Integer start,@Param("end")Integer end);
+
+	/**获取购物车商品数量
+	 * @param id
+	 * @return
+	 */
+	int getGoodsCount(Integer id);
    
 }

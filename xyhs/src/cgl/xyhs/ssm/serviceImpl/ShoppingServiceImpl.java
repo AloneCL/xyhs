@@ -29,8 +29,8 @@ public class ShoppingServiceImpl implements ShoppingService{
 	 * @see cgl.xyhs.ssm.service.ShoppingService#selectByUserId(java.lang.Integer)
 	 */
 	@Override
-	public List<Goods> selectByUserId(Integer userId) {
-		return mapper.selectByUserId(userId);
+	public List<ShoppingCar> selectByUserId(Integer userId,Integer start,Integer end) {
+		return mapper.selectByUserId(userId,start,end);
 	}
 
 	/* (non-Javadoc)
@@ -38,6 +38,11 @@ public class ShoppingServiceImpl implements ShoppingService{
 	 */
 	@Override
 	public int addShopping(ShoppingCar sc) {
+		ShoppingCar sc1;
+		if((sc1 = mapper.selectByGoodsId(sc.getGoodsId()))!=null) {
+			  sc1.setGoodsNum(sc1.getGoodsNum()+1);  
+			  return mapper.updateByPrimaryKeySelective(sc1);
+		} 
 		return mapper.insertSelective(sc);
 	}
 
@@ -55,6 +60,18 @@ public class ShoppingServiceImpl implements ShoppingService{
 	@Override
 	public int updateShopping(ShoppingCar car) {
 		return mapper.updateByPrimaryKeySelective(car);
+	}
+
+	/* (non-Javadoc)
+	 * @see cgl.xyhs.ssm.service.ShoppingService#getGoodsCount(java.lang.Integer)
+	 */
+	@Override
+	public int getGoodsCount(Integer id) {
+		return mapper.getGoodsCount(id);
+	}
+	
+	public ShoppingCar getInfo(Integer id) {
+		return mapper.selectByPrimaryKey(id);
 	}
 
 }

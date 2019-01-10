@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cgl.xyhs.ssm.pojo.Goods;
 import cgl.xyhs.ssm.pojo.ShoppingCar;
 import cgl.xyhs.ssm.service.ShoppingService;
 import cgl.xyhs.web.aop.UserIsLoginClass;
@@ -25,18 +24,35 @@ import cgl.xyhs.web.aop.UserIsLoginClass;
  */
 @Controller
 @UserIsLoginClass
-public class ShoppingCarController {
+public class ShoppingCarController implements FinalConstant{
      
 	@Autowired
 	private ShoppingService service;
 	
 	@RequestMapping("/showShoppingCar")
 	public String showCar(Model model,Integer userId,Integer page) {
+		boolean hasNext = false;
 		if(page == null)
 			page = 1;
-		List<Goods> goodList = service.selectByUserId(userId);
 		
+		int total = service.getGoodsCount(userId);
+		int currentPage = 1;
+		int totalPage =  total%PAGE_DATA_NUM >0 ? total/PAGE_DATA_NUM+1 : total/PAGE_DATA_NUM;
+		if(page > 1) {
+			currentPage = page;
+		}
+		if(currentPage > totalPage)
+			hasNext = true;
+		//起始位置
+		int start = (currentPage - 1)*PAGE_DATA_NUM;
+				//结束位置
+		int end = PAGE_DATA_NUM;
+		List<ShoppingCar> goodList = service.selectByUserId(userId,start,end);
 		model.addAttribute("goodList", goodList);
+		model.addAttribute("totalPage",totalPage);
+		model.addAttribute("total",total);
+		model.addAttribute("currentPage",currentPage);
+		model.addAttribute("hasNext",hasNext);
 		return "/backer/shoppingCar.jsp";
 	}
 	

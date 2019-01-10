@@ -11,6 +11,7 @@
 			property="goodsStatus" />
 		<result column="up_time" jdbcType="TIMESTAMP" property="upTime" />
 		<result column="price" jdbcType="DOUBLE" property="price" />
+		<result column="goods_num" jdbcType="INTEGER" property="goodsNum"/>
 		<result column="goods_img" jdbcType="VARCHAR"
 			property="goodsImg" />
 		<result column="introduce" jdbcType="VARCHAR"
@@ -18,7 +19,7 @@
 		<result column="user_id" jdbcType="INTEGER" property="userId" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		goods_id, goods_name, goods_type, goods_status, up_time,
+		goods_id, goods_name, goods_type, goods_status, up_time,goods_num,
 		price, goods_img,
 		introduce,
 		user_id
@@ -118,6 +119,9 @@
 			<if test="price != null">
 				price,
 			</if>
+			<if test="goodsNum != null">
+			    goods_num,
+			</if>
 			<if test="goodsImg != null">
 				goods_img,
 			</if>
@@ -146,6 +150,9 @@
 			</if>
 			<if test="price != null">
 				#{price,jdbcType=DOUBLE},
+			</if>
+			<if test="goodsNum != null">
+			    #{goodsNum,jdbcType=INTEGER},  
 			</if>
 			<if test="goodsImg != null">
 				#{goodsImg,jdbcType=VARCHAR},
@@ -178,6 +185,9 @@
 			<if test="price != null">
 				price = #{price,jdbcType=DOUBLE},
 			</if>
+			<if test="goodsNum != null">
+			    goods_num = #{goodsNum,jdbcType=INTEGER},
+			</if>
 			<if test="goodsImg != null">
 				goods_img = #{goodsImg,jdbcType=VARCHAR},
 			</if>
@@ -209,6 +219,9 @@
 			</if>
 			<if test="price != null">
 				price = #{price,jdbcType=DOUBLE},
+			</if>
+			<if test="goodsNum != null">
+			    goods_num = #{goodsNum,jdbcType=INTEGER},
 			</if>
 			<if test="goodsImg != null">
 				goods_img = #{goodsImg,jdbcType=VARCHAR},

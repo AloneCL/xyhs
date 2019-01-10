@@ -61,6 +61,11 @@
 							<input type="text" name="goodsId" value="${goods.goodsId }" hidden>
 					</div>
 					<div class="subgrzl ml40" style="margin-top: 20px;">
+						<span id="title">商品数量：</span><input type="number" name="goodsNum"
+							id="goodsNum" value="${goods.goodsNum }"
+							style="font-size: 17px; height: 20px" />
+					</div>
+					<div class="subgrzl ml40" style="margin-top: 20px;">
 						<span id="title">商品价格：</span><input type="text" name="price"
 							id="price" value="${goods.price }"
 							style="font-size: 17px; height: 20px" />
@@ -93,7 +98,7 @@
 					</div>
 					<div align="center">
 						<input type="button" value="确认修改"  onclick="update()"
-							style="margin-top: 40px; background-color: #008CBA; /* Green */ border: none; color: white; padding: 12px 22px; text-align: center; text-decoration: none; display: inline-block; font-size: 15px;" />
+							style="margin-top: 15px; background-color: #008CBA; /* Green */ border: none; color: white; padding: 12px 22px; text-align: center; text-decoration: none; display: inline-block; font-size: 15px;" />
 					</div>
 					
 				</form>

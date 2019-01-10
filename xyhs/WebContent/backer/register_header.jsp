@@ -5,7 +5,7 @@
 	<div class="top center">
 		<div class="left fl">
 			<ul>
-				<li><a href="${pageContext.request.contextPath }/mainGoods.action" target="_blank">商城首页</a></li>
+				<li><a href="${pageContext.request.contextPath }/mainGoods.action">商城首页</a></li>
 				<li>|</li>
 				<li><a href="">MIUI</a></li>
 				<li>|</li>
@@ -29,7 +29,7 @@
 		</div>
 		<div class="right fr">
 			<div class="gouwuche fr">
-				<a href="">购物车</a>
+				<a href="login.action">购物车</a>
 			</div>
 			<div class="fr">
 				<ul>

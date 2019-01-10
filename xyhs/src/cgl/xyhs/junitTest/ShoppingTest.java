@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import cgl.xyhs.ssm.pojo.Goods;
+import cgl.xyhs.ssm.pojo.ShoppingCar;
 import cgl.xyhs.ssm.service.ShoppingService;
 
 /**
@@ -31,12 +31,12 @@ public class ShoppingTest {
 	
 	 @Test
      public void test() {
-		 List<Goods> goodsList = service.selectByUserId(4);
-		 
-		 for (Goods goods : goodsList) {
+		 List<ShoppingCar> goodsList = service.selectByUserId(4,0,5);
+		 for (ShoppingCar goods : goodsList) {
 			System.out.println(goods);
 		}
-    	
+    	/*ShoppingCar sc = service.getInfo(1);
+    	System.out.println(sc);*/
       }
 }
 

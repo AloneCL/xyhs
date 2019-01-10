@@ -8,7 +8,7 @@
 			<ul>
 				<li><a
 					href="${pageContext.request.contextPath }/mainGoods.action"
-					target="_blank">商城首页</a></li>
+					 >商城首页</a></li>
 				<li>|</li>
 				<li><a href="">MIUI</a></li>
 				<li>|</li>
@@ -45,17 +45,17 @@
 						<li><a rel="nofollow"
 							href="${pageContext.request.contextPath}/userInfo.action">个人中心</a></li>
 						<li><a rel="nofollow" href="javascript:;" onclick="addGoods()"
-							target="_blank">上传商品</a></li>
+							 >上传商品</a></li>
 						<li><a rel="nofollow"
 							href="${pageContext.request.contextPath}/searchUserGoods.action?id=${cookie.userId.value }">我的商品</a>
 						</li>
-						<li><a rel="nofollow" href="https://account.xiaomi.com/"
-							target="_blank">小米账户</a></li>
+						<li><a rel="nofollow" href="${pageContext.request.contextPath}/updatePassWord.action"
+							 >修改密码</a></li>
 						<li><a rel="nofollow"
 							href="${pageContext.request.contextPath}/logOut.action">退出登录</a></li>
 					</ul>
 				</span> <span class="message"> <a rel="nofollow"
-					data-href="//order.mi.com/message/list" class="link link-order"
+					data-href="" class="link link-order"
 					data-login="true">消息通知 <i class="J_miMessageTotal"></i>
 				</a>
 				</span> <a rel="nofollow" class="link link-order"
@@ -67,19 +67,19 @@
 </header>
 <div class="banner_x center">
 	<a href="${pageContext.request.contextPath }/mainGoods.action"
-		target="_blank"><div class="logo fl"></div></a> <a href=""><div
+		><div class="logo fl"></div></a> <a href=""><div
 			class="ad_top fl"></div></a>
 	<div class="nav fl">
 		<ul>
-			<li><a href="">小电器</a></li>
-			<li><a href="">书籍</a></li>
-			<li><a href="">小书桌</a></li>
-			<li><a href="">实用小工具</a></li>
-			<li><a href="">服装</a></li>
-			<li><a href="">复习资料/笔记</a></li>
-			<li><a href="">洗漱品</a></li>
-			<li><a href="">服务</a></li>
-			<li><a href="">社区</a></li>
+			<li><a href="${pageContext.request.contextPath }/mainGoods.action">小电器</a></li>
+			<li><a href="${pageContext.request.contextPath }/mainGoods.action">书籍</a></li>
+			<li><a href="${pageContext.request.contextPath }/mainGoods.action">小书桌</a></li>
+			<li><a href="${pageContext.request.contextPath }/mainGoods.action">实用小工具</a></li>
+			<li><a href="${pageContext.request.contextPath }/mainGoods.action">服装</a></li>
+			<li><a href="${pageContext.request.contextPath }/mainGoods.action">复习资料/笔记</a></li>
+			<li><a href="${pageContext.request.contextPath }/mainGoods.action">洗漱品</a></li>
+			<li><a href="${pageContext.request.contextPath }/mainGoods.action">服务</a></li>
+			<li><a href="${pageContext.request.contextPath }/mainGoods.action">社区</a></li>
 		</ul>
 	</div>
 	<div class="search fr">
