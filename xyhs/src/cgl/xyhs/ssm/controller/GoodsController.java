@@ -81,7 +81,9 @@ public class GoodsController implements FinalConstant {
 		if (currentPage < totalPage) {
 			hasNext = true;
 		}
-		
+		if(total == 0) {
+			currentPage = 1;
+		}
 		int start = (currentPage - 1) * PAGE_DATA_NUM;
 		List<Goods> tgoods1 = service.getByTypePage(type, start, 5);
 		List<Goods> tgoods2 = service.getByTypePage(type, start+5, 5);
